@@ -1,9 +1,12 @@
 @import './../../scss/colors.scss';
 @import './../../scss/fontSize.scss';
-
-.nav-container {
+.nav {
   max-width: 1200px;
   margin: 0 auto;
+}
+.nav-container {
+  // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
   color: $navbarFontColor;
   font-size: $navbarFontSize;
   display: flex;
