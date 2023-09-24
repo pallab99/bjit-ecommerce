@@ -1,0 +1,30 @@
+@import './../../scss/colors.scss';
+@import './../../scss/fontSize.scss';
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  color: $navbarFontColor;
+  font-size: $navbarFontSize;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0px;
+  font-weight: 500px;
+}
+.hover {
+  cursor: pointer;
+}
+.hover:hover {
+  color: $colorPrimary;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-container {
+    margin: 0px 20px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .nav-container {
+    margin: 0px 20px;
+  }
+}
