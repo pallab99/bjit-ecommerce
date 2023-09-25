@@ -13,13 +13,11 @@ function Index() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://fakestoreapi.com/auth/login", {
-        username: username,
-        password: password,
+      await axios.post("https://fakestoreapi.com/auth/login", {
+        username,
+        password,
       });
-      if (response.status === 200) {
-        navigate("/");
-      }
+      navigate("/");
     } catch (error) {
       alert("Invalid Credentials");
     }
