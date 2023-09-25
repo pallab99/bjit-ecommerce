@@ -9,7 +9,7 @@ export default function Index() {
   return (
     <div className="nav">
       <div className="nav-container">
-        <div className="hover">E-commerce store</div>
+        <div className="hover">ECommerce </div>
         <div className="right-div">
           <svg
             className="cart-icon"
