@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
-import './index.scss';
+import { useState } from "react";
+import "./index.scss";
 export default function Index({ data }) {
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -11,7 +11,7 @@ export default function Index({ data }) {
           <div
             key={index}
             className={`card ${
-              hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
+              hoveredCard !== null && hoveredCard !== index ? "grayscale" : ""
             }`}
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}

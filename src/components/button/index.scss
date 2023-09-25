@@ -1,4 +1,4 @@
-@import './../../scss/colors.scss';
+@import "./../../scss/colors.scss";
 .sign-in-btn {
   padding: 10px 20px;
   background-color: transparent;
@@ -9,6 +9,21 @@
   text-align: center;
 }
 .sign-in-btn:hover {
+  background-color: $colorPrimary;
+  color: white;
+  border: 1px solid $colorPrimary;
+}
+.add-to-cart-button {
+  margin-top: 4px;
+  padding: 8px 15px;
+  background-color: transparent;
+  border: 1px solid black;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.add-to-cart-button:hover {
   background-color: $colorPrimary;
   color: white;
   border: 1px solid $colorPrimary;

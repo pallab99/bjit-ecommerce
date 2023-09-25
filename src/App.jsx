@@ -1,6 +1,6 @@
-import './App.scss';
-import Navbar from './components/navbar';
-import Product from './components/products';
+import "./App.scss";
+import Navbar from "./components/navbar";
+import Product from "./components/products";
 function App() {
   return (
     <>
