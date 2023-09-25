@@ -1,12 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
-import Navbar from "./components/navbar";
-import Product from "./components/products";
+
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+
 function App() {
   return (
-    <>
-      <Navbar></Navbar>
-      <Product></Product>
-    </>
+    <Routes>
+      <Route path="/" Component={Home} />
+      <Route path="/login" Component={Login}></Route>
+    </Routes>
   );
 }
 

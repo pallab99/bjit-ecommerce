@@ -1,6 +1,11 @@
 import "./index.scss";
 import SignInButton from "./../button";
-export default function index() {
+import { useNavigate } from "react-router-dom";
+export default function Index() {
+  const navigate = useNavigate();
+  const handleButtonClick = () => {
+    navigate("/login");
+  };
   return (
     <div className="nav">
       <div className="nav-container">
@@ -19,7 +24,11 @@ export default function index() {
             />
           </svg>
           <span>{}</span>
-          <SignInButton className={"sign-in-btn"} text="Sign In"></SignInButton>
+          <SignInButton
+            className={"sign-in-btn"}
+            text="Sign In"
+            handleButtonClick={handleButtonClick}
+          ></SignInButton>
         </div>
       </div>
     </div>
