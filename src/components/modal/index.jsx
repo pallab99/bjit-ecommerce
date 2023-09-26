@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import "./index.scss";
-import { Modal } from "antd";
-import axios from "axios";
-import Loader from "./../loader";
+import { useContext, useEffect, useState } from 'react';
+import './index.scss';
+import { Modal } from 'antd';
+import axios from 'axios';
+import Loader from './../loader';
+import { CartContext } from '../../cartContext';
 
 const Index = ({ modalVisible, handleCancel, index }) => {
   const [productData, setProductData] = useState({});
@@ -13,6 +14,7 @@ const Index = ({ modalVisible, handleCancel, index }) => {
   useEffect(() => {
     fetchProductData();
   }, [index]);
+  const { cartItems, setCartItems } = useContext(CartContext);
   const fetchProductData = async () => {
     try {
       setIsLoading(true);
@@ -25,6 +27,9 @@ const Index = ({ modalVisible, handleCancel, index }) => {
     } catch (error) {
       setIsLoading(false);
     }
+  };
+  const addToCart = () => {
+    setCartItems((prev) => [...prev, productData]);
   };
   return (
     <Modal open={modalVisible} closable onCancel={handleCancel}>
@@ -43,6 +48,7 @@ const Index = ({ modalVisible, handleCancel, index }) => {
             <h2 className="prod-title">{productData.title}</h2>
             <p className="prod-description">{productData.description}</p>
           </div>
+          <button onClick={addToCart}>Add to cart</button>
         </div>
       )}
     </Modal>

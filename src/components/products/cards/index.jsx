@@ -5,6 +5,7 @@ import './index.scss';
 import Modal from './../../modal';
 import { ProductContext } from '../../../productContext';
 import { ThemeContext } from '../../../themeContext';
+import { CartContext } from '../../../cartContext';
 export default function Index() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -19,12 +20,12 @@ export default function Index() {
     e.stopPropagation();
     setModalVisible(false);
   };
-  const { cartItems } = useContext(ProductContext);
+  const { products } = useContext(ProductContext);
   const { darkTheme } = useContext(ThemeContext);
 
   return (
     <div className={`card-container }`}>
-      {cartItems.map((item, index) => {
+      {products.map((item, index) => {
         return (
           <div
             key={index}

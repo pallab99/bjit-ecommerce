@@ -5,9 +5,11 @@ import { ProductContext } from '../../productContext';
 import { ThemeContext } from '../../themeContext';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { CartContext } from '../../cartContext';
 function Index() {
-  const [cartItems, setCartItems] = useState([]);
+  const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
     fetchCart();
   }, []);
@@ -16,7 +18,7 @@ function Index() {
     try {
       setIsLoading(true);
       const res = await axios.get('https://fakestoreapi.com/products');
-      setCartItems(res.data);
+      setProducts(res.data);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -29,11 +31,13 @@ function Index() {
   return (
     <>
       <ThemeContext.Provider value={{ darkTheme }}>
-        <button onClick={toogleTheme}>toogle theme</button>
-        <ProductContext.Provider value={{ cartItems, isLoading }}>
-          <Navbar></Navbar>
-          <Product></Product>
-          <Footer></Footer>
+        {/* <button onClick={toogleTheme}>toogle theme</button> */}
+        <ProductContext.Provider value={{ products, isLoading }}>
+          <CartContext.Provider value={{ cartItems, setCartItems }}>
+            <Navbar></Navbar>
+            <Product></Product>
+            <Footer></Footer>
+          </CartContext.Provider>
         </ProductContext.Provider>
       </ThemeContext.Provider>
     </>
