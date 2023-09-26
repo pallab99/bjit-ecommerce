@@ -4,7 +4,8 @@ import './App.scss';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cart from './pages/cart';
-
+import { ThemeContext } from './themeContext';
+import { useState } from 'react';
 function App() {
   return (
     <Routes>

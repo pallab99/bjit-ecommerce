@@ -6,10 +6,12 @@ import Category from './../category';
 import CategoryGrid from './categoryGrid';
 import './index.scss';
 import { ProductContext } from '../../productContext';
+import { ThemeContext } from '../../themeContext';
 import { useContext } from 'react';
 export default function Index() {
   const { isLoading } = useContext(ProductContext);
-
+  const { darkTheme } = useContext(ThemeContext);
+  console.log('theme', darkTheme);
   return (
     <>
       <Category>

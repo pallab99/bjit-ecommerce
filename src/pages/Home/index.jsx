@@ -2,6 +2,7 @@ import Navbar from './../../components/navbar';
 import Product from './../../components/products';
 import Footer from './../../components/footer';
 import { ProductContext } from '../../productContext';
+import { ThemeContext } from '../../themeContext';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 function Index() {
@@ -21,14 +22,20 @@ function Index() {
       console.log(error);
     }
   };
-  console.log('loading', isLoading);
+  const [darkTheme, setDarkTheme] = useState(false);
+  const toogleTheme = () => {
+    setDarkTheme((prev) => !prev);
+  };
   return (
     <>
-      <ProductContext.Provider value={{ cartItems, isLoading }}>
-        <Navbar></Navbar>
-        <Product></Product>
-        <Footer></Footer>
-      </ProductContext.Provider>
+      <ThemeContext.Provider value={{ darkTheme }}>
+        <button onClick={toogleTheme}>toogle theme</button>
+        <ProductContext.Provider value={{ cartItems, isLoading }}>
+          <Navbar></Navbar>
+          <Product></Product>
+          <Footer></Footer>
+        </ProductContext.Provider>
+      </ThemeContext.Provider>
     </>
   );
 }

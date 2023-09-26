@@ -4,6 +4,7 @@ import Button from './../../button';
 import './index.scss';
 import Modal from './../../modal';
 import { ProductContext } from '../../../productContext';
+import { ThemeContext } from '../../../themeContext';
 export default function Index() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -19,20 +20,21 @@ export default function Index() {
     setModalVisible(false);
   };
   const { cartItems } = useContext(ProductContext);
+  const { darkTheme } = useContext(ThemeContext);
 
   return (
-    <div className="card-container">
+    <div className={`card-container }`}>
       {cartItems.map((item, index) => {
         return (
           <div
             key={index}
             className={`card ${
               hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
-            }`}
+            }${darkTheme ? 'darkTheme' : ''}`}
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className="card-image">
+            <div className={`card-image ${darkTheme ? 'fix-image' : ''}`}>
               <img src={item.image} alt={item.title} />
             </div>
             <div className="card-text">

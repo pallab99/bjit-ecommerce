@@ -1,4 +1,4 @@
-@import "./../../../scss/colors.scss";
+@import './../../../scss/colors.scss';
 
 .card-container {
   max-width: 1200px;
@@ -27,7 +27,7 @@
   }
 }
 
-[transition-style="in:wipe:right"] {
+[transition-style='in:wipe:right'] {
   animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-right both;
 }
 .grayscale {
@@ -40,6 +40,9 @@
   object-fit: scale-down;
   transition: 0.5s all ease-in-out;
   mix-blend-mode: multiply;
+}
+.fix-image img {
+  mix-blend-mode: normal;
 }
 .card:hover img {
   transform: scale(1.1) translateY(-10px);
