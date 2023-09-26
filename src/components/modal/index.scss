@@ -1,3 +1,4 @@
+@import "./../../scss/colors.scss";
 .prod-title {
   font-size: 30px;
 }
@@ -7,4 +8,7 @@
 }
 .ant-modal-footer {
   display: none;
+}
+.ant-modal-close:hover {
+  background-color: $colorPrimary;
 }

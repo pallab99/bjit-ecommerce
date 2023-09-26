@@ -7,12 +7,14 @@ export default function Index({ data }) {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
-  const openModal = (index) => {
+  const openModal = (index, e) => {
+    e.stopPropagation();
     setSelectedItemIndex(index);
     setModalVisible(true);
   };
 
-  const handleCancel = () => {
+  const handleCancel = (e) => {
+    e.stopPropagation();
     setModalVisible(false);
   };
   return (
@@ -39,7 +41,7 @@ export default function Index({ data }) {
             <Button
               className={"sign-in-btn"}
               text={"View"}
-              handleButtonClick={() => openModal(index)}
+              handleButtonClick={(e) => openModal(index, e)}
             ></Button>
           </div>
         );

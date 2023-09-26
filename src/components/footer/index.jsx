@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./index.scss";
-
+import FooterChildren from "./footerchildren";
 const Index = () => {
   const [home] = useState([
     "Smartphone",
@@ -27,30 +27,38 @@ const Index = () => {
   ]);
   return (
     <div className="footer-container">
-      <div className="footer-item">
-        <h2>Home</h2>
-        {home.map((ele, index) => {
-          return <li key={index}>{ele}</li>;
-        })}
-      </div>
-      <div className="footer-item">
-        <h2>Products</h2>
-        {product.map((ele, index) => {
-          return <li key={index}>{ele}</li>;
-        })}
-      </div>
-      <div className="footer-item">
-        <h2>Policies</h2>
-        {policy.map((ele, index) => {
-          return <li key={index}>{ele}</li>;
-        })}
-      </div>
-      <div className="footer-item">
-        <h2>support</h2>
-        {support.map((ele, index) => {
-          return <li key={index}>{ele}</li>;
-        })}
-      </div>
+      <FooterChildren>
+        <div className="footer-item">
+          <h2>Home</h2>
+          {home.map((ele, index) => {
+            return <li key={index}>{ele}</li>;
+          })}
+        </div>
+      </FooterChildren>
+      <FooterChildren>
+        <div className="footer-item">
+          <h2>Product</h2>
+          {product.map((ele, index) => {
+            return <li key={index}>{ele}</li>;
+          })}
+        </div>
+      </FooterChildren>
+      <FooterChildren>
+        <div className="footer-item">
+          <h2>Policies</h2>
+          {policy.map((ele, index) => {
+            return <li key={index}>{ele}</li>;
+          })}
+        </div>
+      </FooterChildren>
+      <FooterChildren>
+        <div className="footer-item">
+          <h2>Support</h2>
+          {support.map((ele, index) => {
+            return <li key={index}>{ele}</li>;
+          })}
+        </div>
+      </FooterChildren>
     </div>
   );
 };

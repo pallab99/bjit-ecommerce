@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import "./index.scss";
@@ -11,8 +12,7 @@ const Index = ({ modalVisible, handleCancel, index }) => {
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     fetchProductData();
-  }, [modalVisible, index]);
-
+  }, [index]);
   const fetchProductData = async () => {
     try {
       setIsLoading(true);
@@ -29,7 +29,7 @@ const Index = ({ modalVisible, handleCancel, index }) => {
   return (
     <Modal open={modalVisible} closable onCancel={handleCancel}>
       {isLoading ? (
-        <Loader></Loader>
+        <Loader />
       ) : (
         <div>
           <div className="card-image">
