@@ -27,7 +27,7 @@ export default function Index() {
   return (
     <>
       <Category>
-        <CategoryGrid></CategoryGrid>
+        <CategoryGrid />
       </Category>
       {isLoading ? (
         <Loader />
