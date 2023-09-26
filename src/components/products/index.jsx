@@ -1,28 +1,14 @@
 /* eslint-disable react/prop-types */
-import Card from "./cards";
-import Loader from "./../loader";
-// import { useEffect, useState } from "react";
-import axios from "axios";
-import { useState, useEffect } from "react";
-import Category from "./../category";
-import CategoryGrid from "./categoryGrid";
-import "./index.scss";
+import Card from './cards';
+import Loader from './../loader';
+
+import Category from './../category';
+import CategoryGrid from './categoryGrid';
+import './index.scss';
+import { ProductContext } from '../../productContext';
+import { useContext } from 'react';
 export default function Index() {
-  const [productData, setProductData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    fetchProductData();
-  }, []);
-  const fetchProductData = async () => {
-    try {
-      setIsLoading(true);
-      const response = await axios.get("https://fakestoreapi.com/products");
-      setProductData(response.data);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-    }
-  };
+  const { isLoading } = useContext(ProductContext);
 
   return (
     <>
@@ -35,12 +21,12 @@ export default function Index() {
         <>
           <h2
             style={{
-              textAlign: "center",
+              textAlign: 'center',
             }}
           >
             Products
           </h2>
-          <Card data={productData}></Card>
+          <Card></Card>
         </>
       )}
     </>

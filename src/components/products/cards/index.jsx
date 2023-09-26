@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
-import Button from "./../../button";
-import "./index.scss";
-import Modal from "./../../modal";
-export default function Index({ data }) {
+import { useContext, useState } from 'react';
+import Button from './../../button';
+import './index.scss';
+import Modal from './../../modal';
+import { ProductContext } from '../../../productContext';
+export default function Index() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
@@ -17,14 +18,16 @@ export default function Index({ data }) {
     e.stopPropagation();
     setModalVisible(false);
   };
+  const { cartItems } = useContext(ProductContext);
+
   return (
     <div className="card-container">
-      {data.map((item, index) => {
+      {cartItems.map((item, index) => {
         return (
           <div
             key={index}
             className={`card ${
-              hoveredCard !== null && hoveredCard !== index ? "grayscale" : ""
+              hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
             }`}
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
@@ -39,8 +42,8 @@ export default function Index({ data }) {
               <p className="description">{item.description}</p>
             </div>
             <Button
-              className={"sign-in-btn"}
-              text={"View"}
+              className={'sign-in-btn'}
+              text={'View'}
               handleButtonClick={(e) => openModal(index, e)}
             ></Button>
           </div>
