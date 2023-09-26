@@ -1,9 +1,20 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
+import Button from "./../../button";
 import "./index.scss";
+import Modal from "./../../modal";
 export default function Index({ data }) {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedItemIndex, setSelectedItemIndex] = useState(null);
+  const openModal = (index) => {
+    setSelectedItemIndex(index);
+    setModalVisible(true);
+  };
 
+  const handleCancel = () => {
+    setModalVisible(false);
+  };
   return (
     <div className="card-container">
       {data.map((item, index) => {
@@ -25,9 +36,19 @@ export default function Index({ data }) {
               <h2 className="title">{item.title}</h2>
               <p className="description">{item.description}</p>
             </div>
+            <Button
+              className={"sign-in-btn"}
+              text={"View"}
+              handleButtonClick={() => openModal(index)}
+            ></Button>
           </div>
         );
       })}
+      <Modal
+        modalVisible={modalVisible}
+        handleCancel={handleCancel}
+        index={selectedItemIndex}
+      ></Modal>
     </div>
   );
 }
