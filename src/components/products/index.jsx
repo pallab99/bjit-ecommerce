@@ -4,6 +4,9 @@ import Loader from "./../loader";
 // import { useEffect, useState } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Category from "./../category";
+import CategoryGrid from "./categoryGrid";
+import "./index.scss";
 export default function Index() {
   const [productData, setProductData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,5 +23,26 @@ export default function Index() {
       setIsLoading(false);
     }
   };
-  return isLoading ? <Loader /> : <Card data={productData}></Card>;
+
+  return (
+    <>
+      <Category>
+        <CategoryGrid></CategoryGrid>
+      </Category>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <h2
+            style={{
+              textAlign: "center",
+            }}
+          >
+            Products
+          </h2>
+          <Card data={productData}></Card>
+        </>
+      )}
+    </>
+  );
 }

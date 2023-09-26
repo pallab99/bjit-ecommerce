@@ -26,14 +26,8 @@ const Index = ({ modalVisible, handleCancel, index }) => {
       setIsLoading(false);
     }
   };
-  console.log("data", productData);
   return (
-    <Modal
-      open={modalVisible}
-      closable
-      onCancel={handleCancel}
-      onOk={handleCancel}
-    >
+    <Modal open={modalVisible} closable onCancel={handleCancel}>
       {isLoading ? (
         <Loader></Loader>
       ) : (

@@ -1,0 +1,24 @@
+.footer-container {
+  //   max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 20px;
+  color: rgb(219, 219, 219);
+  margin: 0px auto;
+  justify-items: center;
+  background-color: black;
+  padding: 50px;
+}
+.footer-item h2 {
+  margin-bottom: 5px;
+}
+.footer-item li {
+  list-style: circle;
+}
+@media only screen and (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    margin: 20px 15px;
+    justify-items: start;
+  }
+}

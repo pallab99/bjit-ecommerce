@@ -16,6 +16,19 @@
   max-height: 410px;
   background-color: white;
   overflow: hidden; /* Add this line */
+  // animation: wipe-in-right 1s;
+}
+@keyframes wipe-in-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:wipe:right"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) wipe-in-right both;
 }
 .grayscale {
   filter: grayscale(100%);
@@ -59,6 +72,7 @@
   color: grey;
   font-size: 22px;
 }
+
 @media only screen and (max-width: 600px) {
   .card-container {
     grid-template-columns: 1fr;
@@ -70,24 +84,6 @@
   }
 }
 
-// @media only screen and (min-width: 601px) {
-//   .card-container {
-//     grid-template-columns: 1fr 1fr;
-//     margin: 20px 15px;
-//   }
-//   .card {
-//     max-width: 100%;
-//     text-align: center;
-//   }
-// }
-// @media only screen and (max-width: 1300px) {
-//   .card-container {
-//     display: grid;
-
-//     grid-template-columns: repeat(3, 1fr);
-//     justify-items: center;
-//   }
-// }
 @media only screen and (max-width: 600px) {
   .card-container {
     grid-template-columns: 1fr;
