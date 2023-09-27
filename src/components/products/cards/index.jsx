@@ -19,12 +19,11 @@ export default function Index() {
     e.stopPropagation();
     setModalVisible(false);
   };
-  const { products } = useContext(ProductContext);
-  // const { darkTheme } = useContext(ThemeContext);
+  const { data } = useContext(ProductContext);
 
   return (
     <div className={`card-container }`}>
-      {products.map((item, index) => {
+      {data.map((item, index) => {
         return (
           <div
             key={index}

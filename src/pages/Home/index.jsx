@@ -1,32 +1,18 @@
 import Navbar from "./../../components/navbar";
 import Product from "./../../components/products";
 import Footer from "./../../components/footer";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { ProductContext } from "../../context/productContext";
 import { CartContext } from "../../context/cartContext";
+import useFetchData from "../../hooks/useApi";
 function Index() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const URL = "https://fakestoreapi.com/products";
+  const { data, isLoading } = useFetchData(URL);
   const [cartItems, setCartItems] = useState([]);
-  useEffect(() => {
-    fetchCart();
-  }, []);
-
-  const fetchCart = async () => {
-    try {
-      setIsLoading(true);
-      const res = await axios.get("https://fakestoreapi.com/products");
-      setProducts(res.data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <>
-      <ProductContext.Provider value={{ products, isLoading }}>
+      <ProductContext.Provider value={{ data, isLoading }}>
         <CartContext.Provider value={{ cartItems, setCartItems }}>
           <Navbar></Navbar>
           <Product></Product>
