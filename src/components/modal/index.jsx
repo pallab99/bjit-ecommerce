@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useContext } from "react";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 import "./index.scss";
 import { Modal } from "antd";
 import Loader from "./../loader";
@@ -13,10 +15,13 @@ const Index = ({ modalVisible, handleCancel, index }) => {
   const { data, isLoading } = useFetchData(URL);
   //! cart context
   const { setCartItems } = useContext(CartContext);
+  const notify = () => toast.success("Added to the cart");
 
   const addToCart = () => {
     setCartItems((prev) => [...prev, data]);
+    notify();
   };
+
   return (
     <Modal open={modalVisible} closable onCancel={handleCancel}>
       {isLoading ? (
@@ -38,6 +43,17 @@ const Index = ({ modalVisible, handleCancel, index }) => {
               text={"add-to-cart"}
               handleButtonClick={addToCart}
             ></Button>
+            <ToastContainer
+              position="top-center"
+              autoClose={2000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              pauseOnHover
+              theme="colored"
+            />
           </div>
         </div>
       )}

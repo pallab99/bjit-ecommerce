@@ -52,7 +52,7 @@ export default function Index() {
       <Modal
         open={modalVisibility}
         onCancel={openHandleModal}
-        // okButtonProps={}
+        bodyStyle={{ overflowY: "auto", maxHeight: "calc(100vh - 200px)" }}
         className="cart-modal"
         width={700}
       >
