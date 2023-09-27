@@ -57,7 +57,7 @@ export default function Index() {
         width={700}
       >
         {!cartItems.length ? (
-          <h2>No items in cart</h2>
+          <h2 style={{ textAlign: "center" }}>No items in cart</h2>
         ) : (
           <div>
             {cartItems.map((ele, index) => {
@@ -76,7 +76,9 @@ export default function Index() {
             })}
           </div>
         )}
-        {!cartItems.length ? null : <p>Total : {calculateTotalPrice}</p>}
+        {!cartItems.length ? null : (
+          <p className="total-price">Total : ${calculateTotalPrice}</p>
+        )}
       </Modal>
     </div>
   );
