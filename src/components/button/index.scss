@@ -29,3 +29,21 @@
   color: white;
   border: 1px solid rgb(36, 77, 214);
 }
+
+.remove-cart {
+  margin-top: 4px;
+  padding: 8px 15px;
+  background-color: red;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+}
+
+.remove-cart:hover {
+  background-color: rgb(219, 46, 46);
+  color: white;
+  border: 1px solid rgb(219, 46, 46);
+}

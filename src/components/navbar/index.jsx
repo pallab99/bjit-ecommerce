@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useMemo, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import { Modal } from "antd";
-
+import Button from "./../button";
 export default function Index() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
@@ -12,7 +12,7 @@ export default function Index() {
   };
 
   //!consuming cart context
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const [modalVisibility, setModalVisibility] = useState(false);
 
@@ -24,6 +24,9 @@ export default function Index() {
     return cartItems.reduce((total, item) => total + item.price, 0);
   }, [cartItems]);
 
+  const removeCart = () => {
+    setCartItems([]);
+  };
   return (
     <div className="nav">
       <div className="nav-container">
@@ -78,6 +81,15 @@ export default function Index() {
         )}
         {!cartItems.length ? null : (
           <p className="total-price">Total : ${calculateTotalPrice}</p>
+        )}
+        {!cartItems.length ? null : (
+          <div className="clear-btn-div">
+            <Button
+              className={"remove-cart"}
+              text={"clear cart"}
+              handleButtonClick={removeCart}
+            ></Button>
+          </div>
         )}
       </Modal>
     </div>
