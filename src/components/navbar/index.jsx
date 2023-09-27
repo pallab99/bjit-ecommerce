@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useMemo, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import { Modal } from "antd";
-import index from "../loader";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -12,11 +11,15 @@ export default function Index() {
     navigate("/login");
   };
 
+  //!consuming cart context
   const { cartItems } = useContext(CartContext);
+
   const [modalVisibility, setModalVisibility] = useState(false);
+
   const openHandleModal = () => {
     setModalVisibility((prevVisibility) => !prevVisibility);
   };
+
   const calculateTotalPrice = useMemo(() => {
     return cartItems.reduce((total, item) => total + item.price, 0);
   }, [cartItems]);
@@ -73,7 +76,7 @@ export default function Index() {
             })}
           </div>
         )}
-        <p>Total : {calculateTotalPrice}</p>
+        {!cartItems.length ? null : <p>Total : {calculateTotalPrice}</p>}
       </Modal>
     </div>
   );
