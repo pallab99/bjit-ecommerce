@@ -14,7 +14,7 @@
   color: white;
   border: 1px solid $colorPrimary;
 }
-.add-to-cart-button {
+.add-to-cart-btn {
   margin-top: 4px;
   padding: 8px 15px;
   background-color: transparent;
@@ -24,8 +24,8 @@
   border-radius: 5px;
   text-align: center;
 }
-.add-to-cart-button:hover {
-  background-color: $colorPrimary;
+.add-to-cart-btn:hover {
+  background-color: rgb(36, 77, 214);
   color: white;
-  border: 1px solid $colorPrimary;
+  border: 1px solid rgb(36, 77, 214);
 }

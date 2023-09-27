@@ -1,12 +1,17 @@
-import './index.scss';
-import SignInButton from './../button';
-import { useNavigate } from 'react-router-dom';
+import "./index.scss";
+import SignInButton from "./../button";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../context/cartContext";
 
 export default function Index() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
-    navigate('/login');
+    navigate("/login");
   };
+
+  const { cartItems } = useContext(CartContext);
+  console.log("cart from navbar", cartItems);
 
   return (
     <div className="nav">
@@ -27,7 +32,7 @@ export default function Index() {
           </svg>
           {/* <span>{cartItems?.products?.length}</span> */}
           <SignInButton
-            className={'sign-in-btn'}
+            className={"sign-in-btn"}
             text="Sign In"
             handleButtonClick={handleButtonClick}
           ></SignInButton>

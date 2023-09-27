@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from 'react';
-import Button from './../../button';
-import './index.scss';
-import Modal from './../../modal';
-import { ProductContext } from '../../../productContext';
-import { ThemeContext } from '../../../themeContext';
-import { CartContext } from '../../../cartContext';
+import { useContext, useState } from "react";
+import Button from "./../../button";
+import "./index.scss";
+import Modal from "./../../modal";
+
+import { ProductContext } from "../../../context/productContext";
 export default function Index() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
@@ -21,7 +20,7 @@ export default function Index() {
     setModalVisible(false);
   };
   const { products } = useContext(ProductContext);
-  const { darkTheme } = useContext(ThemeContext);
+  // const { darkTheme } = useContext(ThemeContext);
 
   return (
     <div className={`card-container }`}>
@@ -30,12 +29,12 @@ export default function Index() {
           <div
             key={index}
             className={`card ${
-              hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
-            }${darkTheme ? 'darkTheme' : ''}`}
+              hoveredCard !== null && hoveredCard !== index ? "grayscale" : ""
+            }`}
             onMouseEnter={() => setHoveredCard(index)}
             onMouseLeave={() => setHoveredCard(null)}
           >
-            <div className={`card-image ${darkTheme ? 'fix-image' : ''}`}>
+            <div className={`card-image `}>
               <img src={item.image} alt={item.title} />
             </div>
             <div className="card-text">
@@ -45,8 +44,8 @@ export default function Index() {
               <p className="description">{item.description}</p>
             </div>
             <Button
-              className={'sign-in-btn'}
-              text={'View'}
+              className={"sign-in-btn"}
+              text={"View"}
               handleButtonClick={(e) => openModal(index, e)}
             ></Button>
           </div>

@@ -1,11 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.scss';
+import { Route, Routes } from "react-router-dom";
+import "./App.scss";
 
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Cart from './pages/cart';
-import { ThemeContext } from './themeContext';
-import { useState } from 'react';
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Cart from "./pages/cart";
 function App() {
   return (
     <Routes>
