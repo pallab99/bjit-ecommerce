@@ -20,11 +20,14 @@
 
 .book-details-img-div {
   max-width: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .book-details-img-div img {
-  max-height: 400px;
+  max-height: 360px;
   object-fit: cover;
+  mix-blend-mode: multiply;
 }
 .details-description {
   margin-top: 10px;

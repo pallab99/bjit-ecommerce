@@ -4,9 +4,10 @@
   width: 300px;
   margin: auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: white;
 }
 
 .book-form input,
