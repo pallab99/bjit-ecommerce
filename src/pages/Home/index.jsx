@@ -8,11 +8,11 @@ import { CartContext } from "../../context/cartContext";
 import useFetchData from "../../hooks/useApiFetch";
 
 function Index() {
-  const URL = "https://dummyjson.com/products";
+  const URL = "http://localhost:8000/api/books/all";
   //! custom hook call
   const { data, isLoading } = useFetchData(URL);
   const [cartItems, setCartItems] = useState([]);
-
+  // console.log("data", data.data.products);
   return (
     <>
       <ProductContext.Provider value={{ data, isLoading }}>

@@ -7,8 +7,11 @@ import CategoryGrid from "./categoryGrid";
 import "./index.scss";
 import { useContext } from "react";
 import { ProductContext } from "../../context/productContext";
+import useFetchData from "../../hooks/useApiFetch";
 export default function Index() {
-  const { isLoading } = useContext(ProductContext);
+  // const { isLoading } = useContext(ProductContext);
+  const URL = "http://localhost:8000/api/books/all";
+  const { data, isLoading } = useFetchData(URL);
   return (
     <>
       <Category>
@@ -25,7 +28,7 @@ export default function Index() {
           >
             Products
           </h2>
-          <Card></Card>
+          <Card data={data} isLoading={isLoading}></Card>
         </>
       )}
     </>

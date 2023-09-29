@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Button from "./../../button";
 import "./index.scss";
 import Modal from "./../../modal";
 
-import { ProductContext } from "../../../context/productContext";
-export default function Index() {
+export default function Index({ data, isLoading }) {
+  console.log("dataaaa", data);
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
-  const [searchQuery, setSearchQuery] = useState(""); // Step 1: Add a state for search query
 
   const openModal = (index, e) => {
     e.stopPropagation();
@@ -21,28 +20,11 @@ export default function Index() {
     e.stopPropagation();
     setModalVisible(false);
   };
-  const { data } = useContext(ProductContext);
 
-  const filteredProducts = data?.products?.filter((item) =>
-    item.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-
-  if (!data || !data.products) {
-    return <div>Loading...</div>;
-  }
-  const productsToDisplay = searchQuery.length
-    ? filteredProducts
-    : data?.products;
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search by title"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
       <div className={`card-container }`}>
-        {productsToDisplay.map((item, index) => {
+        {data?.data?.products.map((item, index) => {
           return (
             <div
               key={index}
@@ -53,18 +35,22 @@ export default function Index() {
               onMouseLeave={() => setHoveredCard(null)}
             >
               <div className={`card-image `}>
-                <img src={item.images[0]} alt={item.title} />
+                <img
+                  src="https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq"
+                  alt={item.title}
+                />
               </div>
               <div className="card-text">
                 <p className="price">Price : {item.price}</p>
                 <p className="rating">Rating : {item.rating}</p>
                 <h2 className="title">{item.title}</h2>
+
                 <p className="description">{item.description}</p>
               </div>
               <Button
                 className={"sign-in-btn"}
                 text={"View"}
-                handleButtonClick={(e) => openModal(index, e)}
+                handleButtonClick={(e) => openModal(item._id, e)}
               ></Button>
             </div>
           );

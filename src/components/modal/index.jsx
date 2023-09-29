@@ -13,10 +13,11 @@ import useFetchData from "../../hooks/useApiFetch";
 
 const Index = ({ modalVisible, handleCancel, index }) => {
   console.log("index", index);
-  const URL = `https://dummyjson.com/products/${index + 1}`;
+  const URL = `http://localhost:8000/api/books/details/${index}`;
 
   //! custom hook call
   const { data, isLoading } = useFetchData(URL);
+  console.log("individual data", data?.data);
 
   //! cart context
   const { setCartItems } = useContext(CartContext);
@@ -35,15 +36,15 @@ const Index = ({ modalVisible, handleCancel, index }) => {
         <div>
           <div className="card-image">
             <img
-              src={Object.keys(data).length > 0 && data?.images[0]}
+              src="https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq"
               alt={data.title}
             />
           </div>
           <div className="card-text">
-            <p className="price">Price : ${data.price}</p>
-            <p className="rating">Category : {data.category}</p>
-            <h2 className="prod-title">{data.title}</h2>
-            <p className="prod-description">{data.description}</p>
+            <p className="price">Price : ${data?.data?.result.price}</p>
+            <p className="rating">Category : {data?.data?.result.category}</p>
+            <h2 className="prod-title">{data?.data?.result.title}</h2>
+            {/* <p className="prod-description">{data.description}</p> */}
           </div>
           <div className="btn-div">
             <Button

@@ -13,15 +13,31 @@ function Index() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://fakestoreapi.com/auth/login", {
-        username,
-        password,
+      const response = await fetch("http://localhost:8000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: username,
+          password,
+        }),
       });
+
+      if (!response.ok) {
+        throw new Error("Invalid Credentials");
+      }
+
+      // If the response is OK, you can choose to do something with the data if needed.
+      // For example, if the server sends back JSON data, you can parse it like this:
+      // const data = await response.json();
+
       navigate("/");
     } catch (error) {
-      alert("Invalid Credentials");
+      alert(error.message || "An error occurred");
     }
   };
+
   return (
     <div className="login-container">
       <form onSubmit={(e) => handleSubmit(e)}>
