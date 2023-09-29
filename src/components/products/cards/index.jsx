@@ -3,13 +3,13 @@ import { useState } from "react";
 import Button from "./../../button";
 import "./index.scss";
 import Modal from "./../../modal";
+import { useNavigate } from "react-router-dom";
 
 export default function Index({ data, isLoading }) {
-  console.log("dataaaa", data);
+  const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedItemIndex, setSelectedItemIndex] = useState(null);
-
   const openModal = (index, e) => {
     e.stopPropagation();
     setSelectedItemIndex(index);
@@ -20,9 +20,19 @@ export default function Index({ data, isLoading }) {
     e.stopPropagation();
     setModalVisible(false);
   };
+  const handleCreateBook = () => {
+    navigate("/createBook");
+  };
 
   return (
     <>
+      <div className="create-book-btn">
+        <Button
+          className={"sign-in-btn"}
+          text={"Create Book"}
+          handleButtonClick={handleCreateBook}
+        ></Button>
+      </div>
       <div className={`card-container }`}>
         {data?.data?.products.map((item, index) => {
           return (
