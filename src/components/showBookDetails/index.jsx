@@ -44,11 +44,11 @@ const Index = () => {
             </div>
             <div className="details-description">
               <h2>Title : {data?.data?.result?.title}</h2>
-              <p>Author: {data?.data?.result?.author}</p>
-              <p>Price: ${data?.data?.result?.price}</p>
-              <p>Rating: {data?.data?.result?.rating}/5</p>
-              <p>Category: {data?.data?.result?.category}</p>
-              <p>Description: {data?.data?.result?.description}</p>
+              <h4>Author: {data?.data?.result?.author}</h4>
+              <h4>Price: ${data?.data?.result?.price}</h4>
+              <h4>Rating: {data?.data?.result?.rating}/5</h4>
+              <h4>Category: {data?.data?.result?.category}</h4>
+              <h4>Description: {data?.data?.result?.description}</h4>
             </div>
             <div className="btn-div-update-dlt">
               <Button
