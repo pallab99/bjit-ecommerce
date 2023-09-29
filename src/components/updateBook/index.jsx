@@ -70,6 +70,7 @@ function BookForm() {
       ) : (
         <>
           <Navbar></Navbar>
+          <h1 className="header-text">Update Book</h1>
           <div className="update-book-form-div">
             <form onSubmit={handleUpdate} className="book-form">
               <input

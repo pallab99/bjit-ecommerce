@@ -24,6 +24,9 @@ function Index() {
   return (
     <>
       <Navbar></Navbar>
+      <div className="bouncing-text">
+        <h1 className="header-text">Create Book</h1>
+      </div>
       <div className="create-book-form-div">
         <form onSubmit={handleSubmit} className="book-form">
           <input
