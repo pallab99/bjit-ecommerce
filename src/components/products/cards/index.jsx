@@ -9,17 +9,7 @@ import { useNavigate } from "react-router-dom";
 export default function Index({ data, isLoading }) {
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
-  const [selectedItemIndex, setSelectedItemIndex] = useState(null);
-  const openModal = (index, e) => {
-    e.stopPropagation();
-    setSelectedItemIndex(index);
-    setModalVisible(true);
-  };
 
-  const handleCancel = () => {
-    setModalVisible(false);
-  };
   const handleCreateBook = () => {
     navigate("/createBook");
   };
@@ -67,11 +57,6 @@ export default function Index({ data, isLoading }) {
             </div>
           );
         })}
-        <Modal
-          modalVisible={modalVisible}
-          handleCancel={handleCancel}
-          index={selectedItemIndex}
-        ></Modal>
       </div>
     </>
   );

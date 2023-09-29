@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loader from "./../loader";
 import Button from "./../button";
 import Navbar from "./../navbar";
+import useDeleteBook from "../../hooks/useDeleteBook";
 const Index = () => {
   const { bookId } = useParams();
   const URL = `http://localhost:8000/api/books/details/${bookId}`;
@@ -14,23 +15,9 @@ const Index = () => {
   const handleUpdateBook = () => {
     navigate(`/updateBook/${bookId}`);
   };
-  const handleDeleteBook = () => {
-    fetch(`http://localhost:8000/api/books/delete/${bookId}`, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Book deleted successfully");
-          navigate("/");
-        } else {
-          console.log("error");
-        }
-      })
-      .catch((error) => {
-        console.log("Error occurred while deleting book:", error);
-      });
-  };
-  console.log("Data", data);
+
+  const { handleDeleteBook } = useDeleteBook(bookId);
+
   return (
     <>
       {isLoading ? (
