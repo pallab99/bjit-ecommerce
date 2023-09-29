@@ -72,7 +72,7 @@ export default function Index() {
                   <div className="description-div">
                     <p>Title: {ele.title}</p>
                     <p>Price: {ele.price}</p>
-                    <p>Rating : {ele.rating.rate}</p>
+                    <p>Rating : {ele.rating}</p>
                   </div>
                 </div>
               );

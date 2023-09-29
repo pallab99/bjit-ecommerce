@@ -10,9 +10,12 @@ import { CartContext } from "../../context/cartContext";
 import Button from "./../button";
 import useFetchData from "../../hooks/useApi";
 const Index = ({ modalVisible, handleCancel, index }) => {
+  console.log("index", index);
   const URL = `https://dummyjson.com/products/${index + 1}`;
+
   //! custom hook call
   const { data, isLoading } = useFetchData(URL);
+
   //! cart context
   const { setCartItems } = useContext(CartContext);
   const notify = () => toast.success("Added to the cart");
@@ -29,7 +32,10 @@ const Index = ({ modalVisible, handleCancel, index }) => {
       ) : (
         <div>
           <div className="card-image">
-            <img src={data?.images[0]} alt={data.title} />
+            <img
+              src={Object.keys(data).length > 0 && data?.images[0]}
+              alt={data.title}
+            />
           </div>
           <div className="card-text">
             <p className="price">Price : ${data.price}</p>
