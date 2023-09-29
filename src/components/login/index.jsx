@@ -1,7 +1,6 @@
 import "./index.scss";
 import Button from "./../button";
 import { useState } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Index() {
@@ -27,10 +26,6 @@ function Index() {
       if (!response.ok) {
         throw new Error("Invalid Credentials");
       }
-
-      // If the response is OK, you can choose to do something with the data if needed.
-      // For example, if the server sends back JSON data, you can parse it like this:
-      // const data = await response.json();
 
       navigate("/");
     } catch (error) {

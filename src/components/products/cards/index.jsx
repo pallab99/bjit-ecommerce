@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "./../../button";
 import "./index.scss";
 import Modal from "./../../modal";
@@ -16,14 +17,15 @@ export default function Index({ data, isLoading }) {
     setModalVisible(true);
   };
 
-  const handleCancel = (e) => {
-    e.stopPropagation();
+  const handleCancel = () => {
     setModalVisible(false);
   };
   const handleCreateBook = () => {
     navigate("/createBook");
   };
-
+  const handleShowBookDetails = (bookId) => {
+    navigate(`/showBookDetails/${bookId}`);
+  };
   return (
     <>
       <div className="create-book-btn">
@@ -60,7 +62,7 @@ export default function Index({ data, isLoading }) {
               <Button
                 className={"sign-in-btn"}
                 text={"View"}
-                handleButtonClick={(e) => openModal(item._id, e)}
+                handleButtonClick={() => handleShowBookDetails(item._id)}
               ></Button>
             </div>
           );

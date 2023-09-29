@@ -47,3 +47,19 @@
   color: white;
   border: 1px solid rgb(219, 46, 46);
 }
+
+.delete-btn {
+  margin-top: 4px;
+  padding: 8px 15px;
+  background-color: transparent;
+  border: 1px solid black;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.delete-btn:hover {
+  background-color: rgb(219, 46, 46);
+  color: white;
+  border: 1px solid rgb(219, 46, 46);
+}
