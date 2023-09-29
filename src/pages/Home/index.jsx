@@ -4,7 +4,9 @@ import Footer from "./../../components/footer";
 import { useState } from "react";
 import { ProductContext } from "../../context/productContext";
 import { CartContext } from "../../context/cartContext";
-import useFetchData from "../../hooks/useApi";
+// import useFetchData from "../../hooks/useApi";
+import useFetchData from "../../hooks/useApiFetch";
+
 function Index() {
   const URL = "https://dummyjson.com/products";
   //! custom hook call

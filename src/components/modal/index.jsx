@@ -8,7 +8,9 @@ import { Modal } from "antd";
 import Loader from "./../loader";
 import { CartContext } from "../../context/cartContext";
 import Button from "./../button";
-import useFetchData from "../../hooks/useApi";
+// import useFetchData from "../../hooks/useApi";
+import useFetchData from "../../hooks/useApiFetch";
+
 const Index = ({ modalVisible, handleCancel, index }) => {
   console.log("index", index);
   const URL = `https://dummyjson.com/products/${index + 1}`;
