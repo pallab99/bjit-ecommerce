@@ -67,7 +67,7 @@ export default function Index() {
               return (
                 <div className="cart-div" key={index}>
                   <div className="img-div">
-                    <img className="cart-img" src={ele.image} alt="" />
+                    <img className="cart-img" src={ele.images[0]} alt="" />
                   </div>
                   <div className="description-div">
                     <p>Title: {ele.title}</p>

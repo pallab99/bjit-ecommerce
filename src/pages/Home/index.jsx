@@ -6,7 +6,7 @@ import { ProductContext } from "../../context/productContext";
 import { CartContext } from "../../context/cartContext";
 import useFetchData from "../../hooks/useApi";
 function Index() {
-  const URL = "https://fakestoreapi.com/products";
+  const URL = "https://dummyjson.com/products";
   //! custom hook call
   const { data, isLoading } = useFetchData(URL);
   const [cartItems, setCartItems] = useState([]);

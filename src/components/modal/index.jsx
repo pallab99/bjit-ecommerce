@@ -10,7 +10,7 @@ import { CartContext } from "../../context/cartContext";
 import Button from "./../button";
 import useFetchData from "../../hooks/useApi";
 const Index = ({ modalVisible, handleCancel, index }) => {
-  const URL = `https://fakestoreapi.com/products/${index + 1}`;
+  const URL = `https://dummyjson.com/products/${index + 1}`;
   //! custom hook call
   const { data, isLoading } = useFetchData(URL);
   //! cart context
@@ -29,7 +29,7 @@ const Index = ({ modalVisible, handleCancel, index }) => {
       ) : (
         <div>
           <div className="card-image">
-            <img src={data.image} alt={data.title} />
+            <img src={data?.images[0]} alt={data.title} />
           </div>
           <div className="card-text">
             <p className="price">Price : ${data.price}</p>

@@ -20,10 +20,10 @@ export default function Index() {
     setModalVisible(false);
   };
   const { data } = useContext(ProductContext);
-
+  console.log("products", data);
   return (
     <div className={`card-container }`}>
-      {data.map((item, index) => {
+      {data?.products?.map((item, index) => {
         return (
           <div
             key={index}
@@ -34,7 +34,7 @@ export default function Index() {
             onMouseLeave={() => setHoveredCard(null)}
           >
             <div className={`card-image `}>
-              <img src={item.image} alt={item.title} />
+              <img src={item.images[0]} alt={item.title} />
             </div>
             <div className="card-text">
               <p className="price">Price : {item.price}</p>
