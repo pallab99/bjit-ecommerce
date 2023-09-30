@@ -5,6 +5,7 @@ class BookApi {
     getAll: '/books/all',
     getBookById: 'books/details/',
     createBook: '/books/create',
+    updateBookById: '/books/update/',
     deleteBookById: '/books/delete/',
   };
   async getAllBooks() {
@@ -21,6 +22,11 @@ class BookApi {
 
   async deleteBookById(id) {
     return await Api.http.delete(this.endPoints.deleteBookById + id);
+  }
+
+  async updateBookById(id, data) {
+    console.log(data);
+    return await Api.http.patch(this.endPoints.updateBookById + id, data);
   }
 }
 
