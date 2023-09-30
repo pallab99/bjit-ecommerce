@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
-import Button from "./../../button";
-import "./index.scss";
-import Modal from "./../../modal";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Button from './../../button';
+import './index.scss';
+// import Modal from "./../../modal";
+import { useNavigate } from 'react-router-dom';
 
 export default function Index({ data, isLoading }) {
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const handleCreateBook = () => {
-    navigate("/createBook");
+    navigate('/createBook');
   };
   const handleShowBookDetails = (bookId) => {
     navigate(`/showBookDetails/${bookId}`);
@@ -20,8 +20,8 @@ export default function Index({ data, isLoading }) {
     <>
       <div className="create-book-btn">
         <Button
-          className={"sign-in-btn"}
-          text={"Create Book"}
+          className={'sign-in-btn'}
+          text={'Create Book'}
           handleButtonClick={handleCreateBook}
         ></Button>
       </div>
@@ -31,7 +31,7 @@ export default function Index({ data, isLoading }) {
             <div
               key={index}
               className={`card ${
-                hoveredCard !== null && hoveredCard !== index ? "grayscale" : ""
+                hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
               }`}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
@@ -50,8 +50,8 @@ export default function Index({ data, isLoading }) {
                 <p className="description">{item.description}</p>
               </div>
               <Button
-                className={"sign-in-btn"}
-                text={"View"}
+                className={'sign-in-btn'}
+                text={'View'}
                 handleButtonClick={() => handleShowBookDetails(item._id)}
               ></Button>
             </div>

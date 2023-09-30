@@ -1,17 +1,34 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import "./index.scss";
-import useFetchData from "../../hooks/useApiFetch";
-import { useParams, useNavigate } from "react-router-dom";
-import Loader from "./../loader";
-import Button from "./../button";
-import Navbar from "./../navbar";
-import useDeleteBook from "../../hooks/useDeleteBook";
+import React, { useEffect, useState } from 'react';
+import './index.scss';
+import { useParams, useNavigate } from 'react-router-dom';
+import Loader from './../loader';
+import Button from './../button';
+import Navbar from './../navbar';
+import useDeleteBook from '../../hooks/useDeleteBook';
+import BookApi from '../../api/BookApi';
 const Index = () => {
   const { bookId } = useParams();
-  const URL = `http://localhost:8000/api/books/details/${bookId}`;
-  const { data, isLoading } = useFetchData(URL);
 
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (bookId) {
+      getBookById(bookId);
+    }
+  }, [bookId]);
+
+  const getBookById = async (id) => {
+    try {
+      setIsLoading(true);
+      const response = await BookApi.getBookById(id);
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const navigate = useNavigate();
   const handleUpdateBook = () => {
     navigate(`/updateBook/${bookId}`);
@@ -20,13 +37,13 @@ const Index = () => {
   const { handleDeleteBook } = useDeleteBook(bookId);
   const [images] = useState([
     {
-      url: "https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg",
+      url: 'https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg',
     },
     {
-      url: "https://target.scene7.com/is/image/Target/GUEST_ba3fbb9a-daf5-4c17-8e62-3ba620852fb6?wid=488&hei=488&fmt=pjpeg",
+      url: 'https://target.scene7.com/is/image/Target/GUEST_ba3fbb9a-daf5-4c17-8e62-3ba620852fb6?wid=488&hei=488&fmt=pjpeg',
     },
     {
-      url: "https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq",
+      url: 'https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq',
     },
   ]);
   return (
@@ -52,13 +69,13 @@ const Index = () => {
             </div>
             <div className="btn-div-update-dlt">
               <Button
-                className={"update-btn"}
-                text={"Update book"}
+                className={'update-btn'}
+                text={'Update book'}
                 handleButtonClick={handleUpdateBook}
               ></Button>
               <Button
-                className={"delete-btn"}
-                text={"Delete book"}
+                className={'delete-btn'}
+                text={'Delete book'}
                 handleButtonClick={handleDeleteBook}
               ></Button>
             </div>

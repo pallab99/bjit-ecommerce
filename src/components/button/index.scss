@@ -1,4 +1,4 @@
-@import "./../../scss/colors.scss";
+@import './../../scss/colors.scss';
 .sign-in-btn {
   padding: 10px 20px;
   background-color: transparent;
@@ -80,4 +80,19 @@
   background-color: rgb(59, 90, 190);
   color: white;
   border: 1px solid rgb(36, 77, 214);
+}
+
+.add-book-btn {
+  padding: 10px 20px;
+  background-color: #1677ff;
+  border: 1px solid #1677ff;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+.add-book-btn:hover {
+  background-color: #3d89f2;
 }

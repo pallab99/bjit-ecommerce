@@ -1,19 +1,19 @@
 /* eslint-disable no-unused-vars */
-import "./index.scss";
-import SignInButton from "./../button";
-import { useNavigate } from "react-router-dom";
-import { useContext, useMemo, useState } from "react";
-import { CartContext } from "../../context/cartContext";
-import { Modal } from "antd";
-import Button from "./../button";
+import './index.scss';
+import SignInButton from './../button';
+import { useNavigate } from 'react-router-dom';
+import { useContext, useMemo, useState } from 'react';
+import { CartContext } from '../../context/cartContext';
+import { Modal } from 'antd';
+import Button from './../button';
 export default function Index() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
-    navigate("/login");
+    navigate('/login');
   };
 
   const navigateToHome = () => {
-    navigate("/");
+    navigate('/');
   };
 
   //!consuming cart context
@@ -36,7 +36,7 @@ export default function Index() {
     <div className="nav">
       <div className="nav-container">
         <div className="hover" onClick={navigateToHome}>
-          ECommerce{" "}
+          ECommerce{' '}
         </div>
         <div className="right-div" onClick={openHandleModal}>
           <svg
@@ -53,7 +53,7 @@ export default function Index() {
           </svg>
           {/* <span>{cartItems.length}</span> */}
           <SignInButton
-            className={"sign-in-btn"}
+            className={'sign-in-btn'}
             text="Sign In"
             handleButtonClick={handleButtonClick}
           ></SignInButton>

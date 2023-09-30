@@ -1,24 +1,66 @@
-import "./index.scss";
-import useFormSubmit from "../../hooks/useCreateBook";
-import Navbar from "./../navbar";
-
+import './index.scss';
+import Navbar from './../navbar';
+import { useState } from 'react';
+import BookApi from '../../api/BookApi';
+import Button from './../button';
+import ButtonLoader from './../button-loader';
+import ToasterMessage from './../toaster';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 function Index() {
+  const navigate = useNavigate();
   const initialState = {
-    title: "",
-    description: "",
-    price: "",
-    rating: "",
-    stock: "",
-    author: "",
-    category: "",
-    publishedAt: "",
-    isbn: "",
+    title: '',
+    description: '',
+    price: 0,
+    rating: 0,
+    stock: 0,
+    author: '',
+    category: '',
+    publishedAt: '',
+    isbn: '',
   };
-  const url = "http://localhost:8000/api/books/create";
-  const [book, setBook, handleSubmit] = useFormSubmit(initialState, url);
+  const [btnClicked, setBtnClicked] = useState(false);
+  const [book, setBook] = useState(initialState);
 
   const handleChange = (e) => {
-    setBook({ ...book, [e.target.name]: e.target.value });
+    let newValue = e.target.value;
+
+    if (['price', 'stock', 'rating'].includes(e.target.name)) {
+      newValue = parseFloat(newValue);
+    }
+
+    setBook({ ...book, [e.target.name]: newValue });
+  };
+  const showAlert = (res) => {
+    if (res.success) {
+      toast.success(res.message);
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } else {
+      toast.error(res.message);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setBtnClicked(true);
+      const res = await BookApi.createBook(book);
+      console.log(res);
+      showAlert(res.data);
+      setTimeout(() => {
+        setBtnClicked(false);
+      }, 2500);
+    } catch (error) {
+      console.log(error);
+      setBtnClicked(true);
+      showAlert(error.response);
+      setTimeout(() => {
+        setBtnClicked(false);
+      }, 2500);
+    }
   };
 
   return (
@@ -91,7 +133,14 @@ function Index() {
             placeholder="ISBN"
             required
           />
-          <button type="submit">Submit</button>
+          <div className="btn-div">
+            {!btnClicked ? (
+              <Button className={'add-book-btn'} text={'Create'} />
+            ) : (
+              <ButtonLoader />
+            )}
+          </div>
+          <ToasterMessage></ToasterMessage>
         </form>
       </div>
     </>

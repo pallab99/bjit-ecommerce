@@ -1,22 +1,36 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-// import useFormSubmit from "./useFormSubmit";
-import { useParams } from "react-router-dom";
-import useUpdateFormSubmit from "../../hooks/useUpdateBook";
-import useFetchData from "../../hooks/useApiFetch";
-import Loader from "./../loader";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import "./index.scss";
-import Navbar from "./../navbar";
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import useUpdateFormSubmit from '../../hooks/useUpdateBook';
+import Loader from './../loader';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './index.scss';
+import Navbar from './../navbar';
+import BookApi from '../../api/BookApi';
 function BookForm() {
   const { bookId } = useParams();
 
-  const URL = `http://localhost:8000/api/books/details/${bookId}`;
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  //! custom hook call
-  const { data, isLoading } = useFetchData(URL);
-  console.log("data", data);
+  useEffect(() => {
+    if (bookId) {
+      getBookById(bookId);
+    }
+  }, [bookId]);
+
+  const getBookById = async (id) => {
+    try {
+      setIsLoading(true);
+      const response = await BookApi.getBookById(id);
+      setData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const initialState = {
     title: data?.data?.result?.title,
     description: data?.data?.result?.description,
@@ -50,7 +64,7 @@ function BookForm() {
     initialState,
     updateUrl
   );
-  const notify = () => toast.success("Updated successfully");
+  const notify = () => toast.success('Updated successfully');
 
   useEffect(() => {
     if (isUpdateClicked) {
