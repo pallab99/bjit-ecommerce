@@ -39,7 +39,7 @@ export default function Index() {
               textAlign: 'center',
             }}
           >
-            Products
+            Books
           </h2>
 
           <Card data={data} isLoading={isLoading}></Card>

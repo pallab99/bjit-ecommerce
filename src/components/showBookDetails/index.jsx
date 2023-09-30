@@ -7,13 +7,23 @@ import Button from './../button';
 import Navbar from './../navbar';
 import useDeleteBook from '../../hooks/useDeleteBook';
 import BookApi from '../../api/BookApi';
+import Cookies from 'js-cookie';
+import { isAdmin } from '../../helper/tokenAuthorizer';
 const Index = () => {
   const { bookId } = useParams();
 
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
+  const [admin, setAdmin] = useState(false);
   useEffect(() => {
+    const token = Cookies.get('accessToken');
+    if (token) {
+      const res = isAdmin(token);
+      if (res === true) {
+        setAdmin(true);
+      }
+    }
     if (bookId) {
       getBookById(bookId);
     }
@@ -67,18 +77,20 @@ const Index = () => {
               <h4>Category: {data?.data?.result?.category}</h4>
               <h4>Description: {data?.data?.result?.description}</h4>
             </div>
-            <div className="btn-div-update-dlt">
-              <Button
-                className={'update-btn'}
-                text={'Update book'}
-                handleButtonClick={handleUpdateBook}
-              ></Button>
-              <Button
-                className={'delete-btn'}
-                text={'Delete book'}
-                handleButtonClick={handleDeleteBook}
-              ></Button>
-            </div>
+            {admin && (
+              <div className="btn-div-update-dlt">
+                <Button
+                  className={'update-btn'}
+                  text={'Update book'}
+                  handleButtonClick={handleUpdateBook}
+                ></Button>
+                <Button
+                  className={'delete-btn'}
+                  text={'Delete book'}
+                  handleButtonClick={handleDeleteBook}
+                ></Button>
+              </div>
+            )}
           </div>
         </>
       )}

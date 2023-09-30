@@ -3,8 +3,9 @@
 import { useEffect, useState } from 'react';
 import Button from './../../button';
 import './index.scss';
-// import Modal from "./../../modal";
 import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie';
+import { isAdmin } from '../../../helper/tokenAuthorizer';
 
 export default function Index({ data, isLoading }) {
   const navigate = useNavigate();
@@ -16,14 +17,27 @@ export default function Index({ data, isLoading }) {
   const handleShowBookDetails = (bookId) => {
     navigate(`/showBookDetails/${bookId}`);
   };
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get('accessToken');
+    if (token) {
+      const res = isAdmin(token);
+      if (res === true) {
+        setAdmin(true);
+      }
+    }
+  }, []);
   return (
     <>
       <div className="create-book-btn">
-        <Button
-          className={'sign-in-btn'}
-          text={'Create Book'}
-          handleButtonClick={handleCreateBook}
-        ></Button>
+        {admin && (
+          <Button
+            className={'sign-in-btn'}
+            text={'Create Book'}
+            handleButtonClick={handleCreateBook}
+          ></Button>
+        )}
       </div>
       <div className={`card-container }`}>
         {data?.data?.products.map((item, index) => {
