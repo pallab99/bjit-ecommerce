@@ -5,10 +5,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import Loader from './../loader';
 import Button from './../button';
 import Navbar from './../navbar';
-import useDeleteBook from '../../hooks/useDeleteBook';
+// import useDeleteBook from '../../hooks/useDeleteBook';
 import BookApi from '../../api/BookApi';
 import Cookies from 'js-cookie';
 import { isAdmin } from '../../helper/tokenAuthorizer';
+import { ToastContainer, toast } from 'react-toastify';
+import { alertConfigs } from '../../utils/alertConfig';
 const Index = () => {
   const { bookId } = useParams();
 
@@ -44,7 +46,27 @@ const Index = () => {
     navigate(`/updateBook/${bookId}`);
   };
 
-  const { handleDeleteBook } = useDeleteBook(bookId);
+  const showAlert = (res) => {
+    if (res.success) {
+      toast.success(res.message, alertConfigs.success);
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    } else {
+      toast.error(res.message, alertConfigs.error);
+    }
+  };
+
+  const handleDeleteBook = async () => {
+    try {
+      const res = await BookApi.deleteBookById(bookId);
+      console.log('res', res);
+      showAlert(res.data);
+    } catch (error) {
+      console.log('error', error.response);
+      showAlert(error.response);
+    }
+  };
   const [images] = useState([
     {
       url: 'https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg',
@@ -89,6 +111,7 @@ const Index = () => {
                   text={'Delete book'}
                   handleButtonClick={handleDeleteBook}
                 ></Button>
+                <ToastContainer />
               </div>
             )}
           </div>

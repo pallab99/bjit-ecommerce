@@ -7,6 +7,7 @@ import ButtonLoader from './../button-loader';
 import ToasterMessage from './../toaster';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
+import { alertConfigs } from '../../utils/alertConfig';
 function Index() {
   const navigate = useNavigate();
   const initialState = {
@@ -34,12 +35,12 @@ function Index() {
   };
   const showAlert = (res) => {
     if (res.success) {
-      toast.success(res.message);
+      toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
         navigate('/');
       }, 2000);
     } else {
-      toast.error(res.message);
+      toast.error(res.message, alertConfigs.error);
     }
   };
 

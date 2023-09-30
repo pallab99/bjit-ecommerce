@@ -6,38 +6,20 @@ import AuthApi from '../../api/AuthApi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ButtonLoader from './../button-loader';
+import { alertConfigs } from '../../utils/alertConfig';
 function Index() {
   const navigate = useNavigate();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const showAlert = (res) => {
-    console.log(res);
     if (res.success) {
-      toast.success(res.message, {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
         navigate('/');
       }, 2000);
     } else {
-      toast.error(res.message, {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: 'light',
-      });
+      toast.error(res.message, alertConfigs.error);
     }
   };
   const [btnClicked, setBtnClicked] = useState(false);
@@ -50,14 +32,12 @@ function Index() {
         password,
       };
       const res = await AuthApi.signIn(data);
-      console.log(res);
       showAlert(res.data);
       setTimeout(() => {
         setBtnClicked(false);
       }, 2500);
     } catch (error) {
       setBtnClicked(true);
-      console.log(error);
       showAlert(error.response);
       setTimeout(() => {
         setBtnClicked(false);
