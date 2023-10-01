@@ -4,26 +4,35 @@ class Api {
   constructor() {
     this.http = axios.create({
       baseURL: 'http://localhost:8000/api',
-      withCredentials: true, // Set withCredentials to true
-      credentials: 'include',
+      withCredentials: true,
     });
+    this.handleError = this.handleError.bind(this);
 
     this.http.interceptors.response.use(this.handleSuccess, this.handleError);
   }
 
   /**
-   * @param {Object} response - The response from the API.
-   * @returns {Object} The response from the API.
+   * @param {Object} response
+   * @returns {Object}
    */
   handleSuccess(response) {
     return response;
   }
 
   /**
-   * @param {Object} error - The error from the API.
-   * @returns {Promise} A rejected promise with the error.
+   * @param {Object} error
+   * @returns {Promise}
    */
-  handleError(error) {
+  async handleError(error) {
+    try {
+      if (error.response.status === 401) {
+        console.log(error);
+        await this.http.post('/auth/refreshToken');
+        return this.http.request(error.config);
+      }
+    } catch (refreshError) {
+      return Promise.reject(refreshError);
+    }
     const errorObj = {
       response: error.response.data,
       statusCode: error.response.status,

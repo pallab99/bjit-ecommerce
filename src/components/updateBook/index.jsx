@@ -166,7 +166,7 @@ function BookForm() {
               />
               <div className="btn-div">
                 {!btnClicked ? (
-                  <Button className={'add-book-btn'} text={'Create'} />
+                  <Button className={'add-book-btn'} text={'Update'} />
                 ) : (
                   <ButtonLoader />
                 )}

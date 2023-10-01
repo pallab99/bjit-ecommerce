@@ -25,7 +25,6 @@ class BookApi {
   }
 
   async updateBookById(id, data) {
-    console.log(data);
     return await Api.http.patch(this.endPoints.updateBookById + id, data);
   }
 }
