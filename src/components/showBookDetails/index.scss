@@ -37,4 +37,23 @@
   display: flex;
   justify-content: center;
   gap: 20px;
+  // position: absolute;
+}
+.confirmation-box {
+  display: none;
+}
+.active {
+  position: fixed; /* Fixed positioning */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(
+    -50%,
+    -50%
+  ); /* Correct the position by half of the box's width and height */
+  z-index: 1000; /* Make sure it's on top of other elements */
+  /* Add other styles like background color, padding, border, etc. */
+
+  // bottom: 30px;
+  display: grid;
+  background-color: tomato;
 }

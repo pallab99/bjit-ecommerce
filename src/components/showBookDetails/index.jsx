@@ -67,6 +67,10 @@ const Index = () => {
       showAlert(error.response);
     }
   };
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const handleDelete = () => {
+    setDeleteClicked(true);
+  };
   const [images] = useState([
     {
       url: 'https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg',
@@ -100,19 +104,40 @@ const Index = () => {
               <h4>Description: {data?.data?.result?.description}</h4>
             </div>
             {admin && (
-              <div className="btn-div-update-dlt">
-                <Button
-                  className={'update-btn'}
-                  text={'Update book'}
-                  handleButtonClick={handleUpdateBook}
-                ></Button>
-                <Button
-                  className={'delete-btn'}
-                  text={'Delete book'}
-                  handleButtonClick={handleDeleteBook}
-                ></Button>
-                <ToastContainer />
-              </div>
+              <>
+                <div className="btn-div-update-dlt">
+                  <Button
+                    className={'update-btn'}
+                    text={'Update book'}
+                    handleButtonClick={handleUpdateBook}
+                  ></Button>
+                  <Button
+                    className={'delete-btn'}
+                    text={'Delete book'}
+                    // handleButtonClick={handleDeleteBook}
+                    handleButtonClick={handleDelete}
+                  ></Button>
+                  <ToastContainer />
+                </div>
+                <div
+                  className={`confirmation-box ${
+                    deleteClicked ? 'active' : ''
+                  }`}
+                >
+                  <h3>Are you sure you want to delete this book?</h3>
+                  <Button
+                    className={'update-btn'}
+                    text={'Update book'}
+                    handleButtonClick={handleUpdateBook}
+                  ></Button>
+                  <Button
+                    className={'delete-btn'}
+                    text={'Delete book'}
+                    // handleButtonClick={handleDeleteBook}
+                    handleButtonClick={handleDelete}
+                  ></Button>
+                </div>
+              </>
             )}
           </div>
         </>
