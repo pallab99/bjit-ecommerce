@@ -8,6 +8,7 @@ import ToasterMessage from "./../toaster";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { alertConfigs } from "../../utils/alertConfig";
+import { useForm } from "react-hook-form";
 
 function Index() {
   const navigate = useNavigate();
@@ -22,18 +23,24 @@ function Index() {
     publishedAt: "",
     isbn: "",
   };
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
   const [btnClicked, setBtnClicked] = useState(false);
   const [book, setBook] = useState(initialState);
 
-  const handleChange = (e) => {
-    let newValue = e.target.value;
+  // const handleChange = (e) => {
+  //   let newValue = e.target.value;
 
-    if (["price", "stock", "rating"].includes(e.target.name)) {
-      newValue = parseFloat(newValue);
-    }
+  //   if (["price", "stock", "rating"].includes(e.target.name)) {
+  //     newValue = parseFloat(newValue);
+  //   }
 
-    setBook({ ...book, [e.target.name]: newValue });
-  };
+  //   setBook({ ...book, [e.target.name]: newValue });
+  // };
   const showAlert = (res) => {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
@@ -45,11 +52,15 @@ function Index() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (data) => {
+    console.log("ggg");
+    const date = new Date(data.publishedAt);
+    const formattedDate = date.toISOString().split("T")[0];
+    data.publishedAt = formattedDate;
+    console.log(data);
     try {
       setBtnClicked(true);
-      const res = await BookApi.createBook(book);
+      const res = await BookApi.createBook(data);
       console.log(res);
       showAlert(res.data);
       setTimeout(() => {
@@ -72,68 +83,81 @@ function Index() {
         <h1 className="header-text">Create Book</h1>
       </div>
       <div className="create-book-form-div">
-        <form onSubmit={handleSubmit} className="book-form">
+        <form
+          noValidate
+          onSubmit={handleSubmit(handleLogin)}
+          className="book-form"
+        >
           <input
             type="text"
             name="title"
-            onChange={handleChange}
             placeholder="Title"
             required
+            id="title"
+            {...register("title")}
           />
           <textarea
             name="description"
-            onChange={handleChange}
             placeholder="Description"
             required
+            id="description"
+            {...register("description")}
           ></textarea>
           <input
             type="number"
             name="price"
-            onChange={handleChange}
             placeholder="Price"
             required
+            id="price"
+            {...register("price", { valueAsNumber: true })}
           />
           <input
             type="number"
             name="rating"
-            onChange={handleChange}
             placeholder="Rating"
             required
+            id="rating"
+            {...register("rating", { valueAsNumber: true })}
           />
           <input
             type="number"
             name="stock"
-            onChange={handleChange}
             placeholder="Stock"
             required
+            id="stock"
+            {...register("stock", { valueAsNumber: true })}
           />
           <input
             type="text"
             name="author"
-            onChange={handleChange}
             placeholder="Author"
             required
+            id="author"
+            {...register("author")}
           />
           <input
             type="text"
             name="category"
-            onChange={handleChange}
             placeholder="Category"
             required
+            id="author"
+            {...register("category")}
           />
           <input
             type="date"
             name="publishedAt"
-            onChange={handleChange}
             placeholder="Published At"
             required
+            id="publishedAt"
+            {...register("publishedAt")}
           />
           <input
             type="text"
             name="isbn"
-            onChange={handleChange}
             placeholder="ISBN"
             required
+            id="isbn"
+            {...register("isbn")}
           />
           <div className="btn-div">
             {!btnClicked ? (
