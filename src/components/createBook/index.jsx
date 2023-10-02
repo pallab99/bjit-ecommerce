@@ -27,11 +27,9 @@ function Index() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
-  } = useForm();
+  } = useForm({ mode: "onChange" });
   const [btnClicked, setBtnClicked] = useState(false);
-  const [book, setBook] = useState(initialState);
 
   const showAlert = (res) => {
     if (res.success) {
@@ -65,7 +63,7 @@ function Index() {
       }, 2500);
     }
   };
-
+  console.log("errors", errors);
   return (
     <>
       <Navbar></Navbar>
@@ -84,71 +82,153 @@ function Index() {
             placeholder="Title"
             required
             id="title"
-            {...register("title")}
+            {...register("title", {
+              required: "Title is required",
+              minLength: {
+                value: 3,
+                message: "Title length must be minimum 3",
+              },
+              maxLength: {
+                value: 50,
+                message: "Title length can not be greater than 50",
+              },
+            })}
           />
+          {errors.title && <p className="error-span">{errors.title.message}</p>}
           <textarea
             name="description"
             placeholder="Description"
             required
             id="description"
-            {...register("description")}
+            {...register("description", {
+              required: "Description is required",
+              minLength: {
+                value: 15,
+                message: "Description length must be minimum 15",
+              },
+              maxLength: {
+                value: 200,
+                message: "Description length can not be greater than 200",
+              },
+            })}
           ></textarea>
+          {errors.description && (
+            <p className="error-span">{errors.description.message}</p>
+          )}
+
           <input
             type="number"
             name="price"
             placeholder="Price"
             required
             id="price"
-            {...register("price", { valueAsNumber: true })}
+            {...register("price", {
+              valueAsNumber: true,
+              required: "Price is required",
+              min: {
+                value: 1,
+                message: "Price can not be less than 1",
+              },
+              max: {
+                value: 10000,
+                message: "Price can not be greater than 10000",
+              },
+            })}
           />
+          {errors.price && <p className="error-span">{errors.price.message}</p>}
           <input
             type="number"
             name="rating"
             placeholder="Rating"
             required
             id="rating"
-            {...register("rating", { valueAsNumber: true })}
+            {...register("rating", {
+              valueAsNumber: true,
+              required: "Rating is required",
+              min: {
+                value: 1,
+                message: "Rating can not be less than 1",
+              },
+              max: {
+                value: 5,
+                message: "Rating can not be greater than 5",
+              },
+            })}
           />
+          {errors.rating && (
+            <p className="error-span">{errors.rating.message}</p>
+          )}
           <input
             type="number"
             name="stock"
             placeholder="Stock"
             required
             id="stock"
-            {...register("stock", { valueAsNumber: true })}
+            {...register("stock", {
+              valueAsNumber: true,
+              required: "Stock is required",
+              min: {
+                value: 10,
+                message: "Stock can not be less than 10",
+              },
+              max: {
+                value: 500,
+                message: "Stock can not be greater than 500",
+              },
+            })}
           />
+          {errors.stock && <p className="error-span">{errors.stock.message}</p>}
           <input
             type="text"
             name="author"
             placeholder="Author"
             required
             id="author"
-            {...register("author")}
+            {...register("author", {
+              required: "Author is required",
+            })}
           />
+          {errors.author && (
+            <p className="error-span">{errors.author.message}</p>
+          )}
+
           <input
             type="text"
             name="category"
             placeholder="Category"
             required
-            id="author"
-            {...register("category")}
+            id="category"
+            {...register("category", {
+              required: "Category is required",
+            })}
           />
+          {errors.category && (
+            <p className="error-span">{errors.category.message}</p>
+          )}
           <input
             type="date"
             name="publishedAt"
             placeholder="Published At"
             required
             id="publishedAt"
-            {...register("publishedAt")}
+            {...register("publishedAt", {
+              required: "Published at is required",
+            })}
           />
+          {errors.publishedAt && (
+            <p className="error-span">{errors.publishedAt.message}</p>
+          )}
           <input
             type="text"
             name="isbn"
             placeholder="ISBN"
             required
             id="isbn"
-            {...register("isbn")}
+            {...register("isbn", {
+              required: "ISBN at is required",
+            })}
           />
+          {errors.isbn && <p className="error-span">{errors.isbn.message}</p>}
           <div className="btn-div">
             {!btnClicked ? (
               <Button className={"add-book-btn"} text={"Create"} />

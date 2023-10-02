@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./index.scss";
 import Button from "./../button";
 import { useState } from "react";
@@ -44,7 +45,6 @@ function Index() {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm({ mode: "onChange" });
 
