@@ -43,17 +43,33 @@
   display: none;
 }
 .active {
-  position: fixed; /* Fixed positioning */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(
-    -50%,
-    -50%
-  ); /* Correct the position by half of the box's width and height */
-  z-index: 1000; /* Make sure it's on top of other elements */
-  /* Add other styles like background color, padding, border, etc. */
-
-  // bottom: 30px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
   display: grid;
-  background-color: tomato;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: white;
+  transition: 1s ease-in-out square-in-center;
+}
+
+.alert-btn {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+@keyframes square-in-center {
+  from {
+    clip-path: inset(100% 100% 100% 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+[transition-style="in:square:center"] {
+  animation: 2.5s cubic-bezier(0.25, 1, 0.3, 1) square-in-center both;
 }

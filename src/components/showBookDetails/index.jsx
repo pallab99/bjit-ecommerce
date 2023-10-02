@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
-import './index.scss';
-import { useParams, useNavigate } from 'react-router-dom';
-import Loader from './../loader';
-import Button from './../button';
-import Navbar from './../navbar';
+import React, { useEffect, useState } from "react";
+import "./index.scss";
+import { useParams, useNavigate } from "react-router-dom";
+import Loader from "./../loader";
+import Button from "./../button";
+import Navbar from "./../navbar";
 // import useDeleteBook from '../../hooks/useDeleteBook';
-import BookApi from '../../api/BookApi';
-import Cookies from 'js-cookie';
-import { isAdmin } from '../../helper/tokenAuthorizer';
-import { ToastContainer, toast } from 'react-toastify';
-import { alertConfigs } from '../../utils/alertConfig';
+import BookApi from "../../api/BookApi";
+import Cookies from "js-cookie";
+import { isAdmin } from "../../helper/tokenAuthorizer";
+import { ToastContainer, toast } from "react-toastify";
+import { alertConfigs } from "../../utils/alertConfig";
 const Index = () => {
   const { bookId } = useParams();
 
@@ -19,7 +19,7 @@ const Index = () => {
 
   const [admin, setAdmin] = useState(false);
   useEffect(() => {
-    const token = Cookies.get('accessToken');
+    const token = Cookies.get("accessToken");
     if (token) {
       const res = isAdmin(token);
       if (res === true) {
@@ -50,7 +50,7 @@ const Index = () => {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 2000);
     } else {
       toast.error(res.message, alertConfigs.error);
@@ -60,26 +60,25 @@ const Index = () => {
   const handleDeleteBook = async () => {
     try {
       const res = await BookApi.deleteBookById(bookId);
-      console.log('res', res);
       showAlert(res.data);
     } catch (error) {
-      console.log('error', error.response);
+      console.log("error", error.response);
       showAlert(error.response);
     }
   };
   const [deleteClicked, setDeleteClicked] = useState(false);
   const handleDelete = () => {
-    setDeleteClicked(true);
+    setDeleteClicked(!deleteClicked);
   };
   const [images] = useState([
     {
-      url: 'https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg',
+      url: "https://www.electronickits.com/wp-content/uploads/2015/02/products-EFDNEW-e1423809441405.jpg",
     },
     {
-      url: 'https://target.scene7.com/is/image/Target/GUEST_ba3fbb9a-daf5-4c17-8e62-3ba620852fb6?wid=488&hei=488&fmt=pjpeg',
+      url: "https://target.scene7.com/is/image/Target/GUEST_ba3fbb9a-daf5-4c17-8e62-3ba620852fb6?wid=488&hei=488&fmt=pjpeg",
     },
     {
-      url: 'https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq',
+      url: "https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq",
     },
   ]);
   return (
@@ -107,13 +106,13 @@ const Index = () => {
               <>
                 <div className="btn-div-update-dlt">
                   <Button
-                    className={'update-btn'}
-                    text={'Update book'}
+                    className={"update-btn"}
+                    text={"Update book"}
                     handleButtonClick={handleUpdateBook}
                   ></Button>
                   <Button
-                    className={'delete-btn'}
-                    text={'Delete book'}
+                    className={"delete-btn"}
+                    text={"Delete book"}
                     // handleButtonClick={handleDeleteBook}
                     handleButtonClick={handleDelete}
                   ></Button>
@@ -121,21 +120,22 @@ const Index = () => {
                 </div>
                 <div
                   className={`confirmation-box ${
-                    deleteClicked ? 'active' : ''
+                    deleteClicked ? "active" : ""
                   }`}
                 >
                   <h3>Are you sure you want to delete this book?</h3>
-                  <Button
-                    className={'update-btn'}
-                    text={'Update book'}
-                    handleButtonClick={handleUpdateBook}
-                  ></Button>
-                  <Button
-                    className={'delete-btn'}
-                    text={'Delete book'}
-                    // handleButtonClick={handleDeleteBook}
-                    handleButtonClick={handleDelete}
-                  ></Button>
+                  <div className="alert-btn">
+                    <Button
+                      className={"update-btn"}
+                      text={"Cancel"}
+                      handleButtonClick={handleDelete}
+                    ></Button>
+                    <Button
+                      className={"delete-btn"}
+                      text={"Ok"}
+                      handleButtonClick={handleDeleteBook}
+                    ></Button>
+                  </div>
                 </div>
               </>
             )}

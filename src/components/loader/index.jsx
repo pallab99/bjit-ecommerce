@@ -1,4 +1,4 @@
-import './index.scss';
+import "./index.scss";
 export default function index() {
   return (
     <div className="loader-container">
