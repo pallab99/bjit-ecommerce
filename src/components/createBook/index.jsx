@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./index.scss";
 import Navbar from "./../navbar";
 import { useState } from "react";
@@ -32,15 +33,6 @@ function Index() {
   const [btnClicked, setBtnClicked] = useState(false);
   const [book, setBook] = useState(initialState);
 
-  // const handleChange = (e) => {
-  //   let newValue = e.target.value;
-
-  //   if (["price", "stock", "rating"].includes(e.target.name)) {
-  //     newValue = parseFloat(newValue);
-  //   }
-
-  //   setBook({ ...book, [e.target.name]: newValue });
-  // };
   const showAlert = (res) => {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
@@ -52,12 +44,10 @@ function Index() {
     }
   };
 
-  const handleLogin = async (data) => {
-    console.log("ggg");
+  const handleCreateBook = async (data) => {
     const date = new Date(data.publishedAt);
     const formattedDate = date.toISOString().split("T")[0];
     data.publishedAt = formattedDate;
-    console.log(data);
     try {
       setBtnClicked(true);
       const res = await BookApi.createBook(data);
@@ -85,7 +75,7 @@ function Index() {
       <div className="create-book-form-div">
         <form
           noValidate
-          onSubmit={handleSubmit(handleLogin)}
+          onSubmit={handleSubmit(handleCreateBook)}
           className="book-form"
         >
           <input
