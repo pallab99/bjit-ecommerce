@@ -1,15 +1,16 @@
-import Api from './apiConfigs';
+import Api from "./apiConfigs";
 
 class BookApi {
   endPoints = {
-    getAll: '/books/all',
-    getBookById: 'books/details/',
-    createBook: '/books/create',
-    updateBookById: '/books/update/',
-    deleteBookById: '/books/delete/',
+    getAll: "/books/all",
+    getBookById: "books/details/",
+    createBook: "/books/create",
+    updateBookById: "/books/update/",
+    deleteBookById: "/books/delete/",
   };
-  async getAllBooks() {
-    return await Api.http.get(this.endPoints.getAll);
+  async getAllBooks(searchTerm) {
+    const queryParams = searchTerm ? `?search=${searchTerm}` : "";
+    return await Api.http.get(this.endPoints.getAll + queryParams);
   }
 
   async getBookById(id) {

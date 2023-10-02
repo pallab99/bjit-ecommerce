@@ -1,25 +1,26 @@
-import './index.scss';
-import Navbar from './../navbar';
-import { useState } from 'react';
-import BookApi from '../../api/BookApi';
-import Button from './../button';
-import ButtonLoader from './../button-loader';
-import ToasterMessage from './../toaster';
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import { alertConfigs } from '../../utils/alertConfig';
+import "./index.scss";
+import Navbar from "./../navbar";
+import { useState } from "react";
+import BookApi from "../../api/BookApi";
+import Button from "./../button";
+import ButtonLoader from "./../button-loader";
+import ToasterMessage from "./../toaster";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { alertConfigs } from "../../utils/alertConfig";
+
 function Index() {
   const navigate = useNavigate();
   const initialState = {
-    title: '',
-    description: '',
+    title: "",
+    description: "",
     price: 0,
     rating: 0,
     stock: 0,
-    author: '',
-    category: '',
-    publishedAt: '',
-    isbn: '',
+    author: "",
+    category: "",
+    publishedAt: "",
+    isbn: "",
   };
   const [btnClicked, setBtnClicked] = useState(false);
   const [book, setBook] = useState(initialState);
@@ -27,7 +28,7 @@ function Index() {
   const handleChange = (e) => {
     let newValue = e.target.value;
 
-    if (['price', 'stock', 'rating'].includes(e.target.name)) {
+    if (["price", "stock", "rating"].includes(e.target.name)) {
       newValue = parseFloat(newValue);
     }
 
@@ -37,7 +38,7 @@ function Index() {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
-        navigate('/');
+        navigate("/");
       }, 2000);
     } else {
       toast.error(res.message, alertConfigs.error);
@@ -136,7 +137,7 @@ function Index() {
           />
           <div className="btn-div">
             {!btnClicked ? (
-              <Button className={'add-book-btn'} text={'Create'} />
+              <Button className={"add-book-btn"} text={"Create"} />
             ) : (
               <ButtonLoader />
             )}
