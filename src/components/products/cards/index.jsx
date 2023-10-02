@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from 'react';
-import Button from './../../button';
-import './index.scss';
-import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie';
-import { isAdmin } from '../../../helper/tokenAuthorizer';
+import { useEffect, useState } from "react";
+import Button from "./../../button";
+import "./index.scss";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { isAdmin } from "../../../helper/tokenAuthorizer";
 
 export default function Index({ data, isLoading }) {
   const navigate = useNavigate();
   const [hoveredCard, setHoveredCard] = useState(null);
 
   const handleCreateBook = () => {
-    navigate('/createBook');
+    navigate("/createBook");
   };
   const handleShowBookDetails = (bookId) => {
     navigate(`/showBookDetails/${bookId}`);
@@ -20,7 +20,7 @@ export default function Index({ data, isLoading }) {
   const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
-    const token = Cookies.get('accessToken');
+    const token = Cookies.get("accessToken");
     if (token) {
       const res = isAdmin(token);
       if (res === true) {
@@ -33,8 +33,8 @@ export default function Index({ data, isLoading }) {
       <div className="create-book-btn">
         {admin && (
           <Button
-            className={'sign-in-btn'}
-            text={'Create Book'}
+            className={"sign-in-btn"}
+            text={"Create Book"}
             handleButtonClick={handleCreateBook}
           ></Button>
         )}
@@ -45,7 +45,7 @@ export default function Index({ data, isLoading }) {
             <div
               key={index}
               className={`card ${
-                hoveredCard !== null && hoveredCard !== index ? 'grayscale' : ''
+                hoveredCard !== null && hoveredCard !== index ? "grayscale" : ""
               }`}
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
@@ -60,12 +60,11 @@ export default function Index({ data, isLoading }) {
                 <p className="price">Price : {item.price}</p>
                 <p className="rating">Rating : {item.rating}</p>
                 <h2 className="title">{item.title}</h2>
-
                 <p className="description">{item.description}</p>
               </div>
               <Button
-                className={'sign-in-btn'}
-                text={'View'}
+                className={"sign-in-btn"}
+                text={"View"}
                 handleButtonClick={() => handleShowBookDetails(item._id)}
               ></Button>
             </div>

@@ -14,6 +14,7 @@ import { alertConfigs } from "../../utils/alertConfig";
 import Button from "./../button";
 import ButtonLoader from "./../button-loader";
 import { useForm } from "react-hook-form";
+import { isValidISBN } from "../../helper/isValidIsbn";
 
 function BookForm() {
   const { bookId } = useParams();
@@ -77,7 +78,7 @@ function BookForm() {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
-        navigate("/");
+        navigate(`/showBookDetails/${bookId}`);
       }, 2000);
     } else {
       toast.error(res.message, alertConfigs.error);
@@ -271,6 +272,12 @@ function BookForm() {
                 id="isbn"
                 {...register("isbn", {
                   required: "ISBN at is required",
+                  validate: (value) => {
+                    if (!isValidISBN(value)) {
+                      return "Invalid ISBN provided";
+                    }
+                    return true;
+                  },
                 })}
               />
               {errors.isbn && (

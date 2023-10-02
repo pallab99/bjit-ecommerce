@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { alertConfigs } from "../../utils/alertConfig";
 import { useForm } from "react-hook-form";
+import { isValidISBN } from "../../helper/isValidIsbn";
 
 function Index() {
   const navigate = useNavigate();
@@ -226,6 +227,12 @@ function Index() {
             id="isbn"
             {...register("isbn", {
               required: "ISBN at is required",
+              validate: (value) => {
+                if (!isValidISBN(value)) {
+                  return "Invalid ISBN provided";
+                }
+                return true;
+              },
             })}
           />
           {errors.isbn && <p className="error-span">{errors.isbn.message}</p>}
