@@ -8,8 +8,18 @@ class BookApi {
     updateBookById: "/books/update/",
     deleteBookById: "/books/delete/",
   };
-  async getAllBooks(searchTerm) {
-    const queryParams = searchTerm ? `?search=${searchTerm}` : "";
+  async getAllBooks(searchTerm, sortBy, sortOrder) {
+    let queryParams = "";
+
+    if (searchTerm) {
+      queryParams += `?search=${searchTerm}`;
+    }
+
+    if (sortBy && sortOrder) {
+      queryParams += queryParams ? "&" : "?";
+      queryParams += `sortBy=${sortBy}&sortOrder=${sortOrder}`;
+    }
+    console.log(queryParams);
     return await Api.http.get(this.endPoints.getAll + queryParams);
   }
 

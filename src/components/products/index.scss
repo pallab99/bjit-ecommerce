@@ -20,3 +20,15 @@
     font-size: 14px;
   }
 }
+
+.sort-select {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+  outline: none;
+  border: 2px solid $colorPrimary;
+}
+.select-div {
+  display: flex;
+  gap: 10px;
+}
