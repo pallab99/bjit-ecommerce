@@ -13,7 +13,7 @@ export default function Index() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const debouncedSearchTerm = useDebounce(searchTerm, 2000);
+  const debouncedSearchTerm = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
     getAllBooks();

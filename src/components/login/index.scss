@@ -1,3 +1,4 @@
+@import "./../../scss/colors.scss";
 .login-container {
   display: grid;
   place-items: center;
@@ -22,8 +23,10 @@
 }
 .input-field {
   width: 100%;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
+  outline: none;
+  border: 1px solid $colorPrimary;
 }
 .btn-div {
   display: flex;

@@ -14,7 +14,9 @@
 .search-input:focus {
   color: $colorPrimary;
 }
-::placeholder {
-  color: $colorPrimary;
-  font-size: 14px;
+.search-input {
+  ::placeholder {
+    color: $colorPrimary;
+    font-size: 14px;
+  }
 }
