@@ -17,21 +17,8 @@ export default function Index() {
     navigate("/");
   };
 
-  //!consuming cart context
-  const { cartItems, setCartItems } = useContext(CartContext);
-
-  const [modalVisibility, setModalVisibility] = useState(false);
-
-  const openHandleModal = () => {
-    setModalVisibility((prevVisibility) => !prevVisibility);
-  };
-
-  // const calculateTotalPrice = useMemo(() => {
-  //   return cartItems.reduce((total, item) => total + item.price, 0);
-  // }, [cartItems]);
-
-  const removeCart = () => {
-    setCartItems([]);
+  const navigateToCartPage = () => {
+    navigate("/cart");
   };
   const [showSignInBtn, setShowSignInBtn] = useState(false);
   useEffect(() => {
@@ -46,13 +33,14 @@ export default function Index() {
         <div className="hover" onClick={navigateToHome}>
           ECommerce{" "}
         </div>
-        <div className="right-div" onClick={openHandleModal}>
+        <div className="right-div">
           <svg
             className="cart-icon"
             width="512"
             height="512"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
+            onClick={navigateToCartPage}
           >
             <path
               fill="currentColor"

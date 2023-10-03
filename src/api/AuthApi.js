@@ -1,16 +1,11 @@
-import Api from './apiConfigs';
+import Api from "./apiConfigs";
 
 class AuthApi {
   endPoints = {
-    signin: '/auth/login',
-    getBookById: 'books/details/',
+    signIn: "/auth/login",
   };
   async signIn(data) {
-    return await Api.http.post(this.endPoints.signin, data);
-  }
-
-  async getBookById(id) {
-    return await Api.http.get(this.endPoints.getBookById + id);
+    return await Api.http.post(this.endPoints.signIn, data);
   }
 }
 

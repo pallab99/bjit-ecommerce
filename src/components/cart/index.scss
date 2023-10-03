@@ -3,7 +3,7 @@
   display: grid;
   color: black;
   margin: 30px auto;
-  place-items: center;
+  place-items: start;
 }
 .cart-items {
   display: flex;
@@ -13,4 +13,20 @@
   height: 200px;
   object-fit: scale-down;
   mix-blend-mode: multiply;
+}
+.book-details-div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.book-details-div img {
+  width: 14%;
+  height: 5%;
+  object-fit: cover;
+}
+.quantity {
+  display: flex;
+  gap: 10px;
 }
