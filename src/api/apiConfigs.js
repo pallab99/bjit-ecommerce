@@ -18,7 +18,10 @@ class Api {
 
   async handleError(error) {
     try {
-      if (error.response.status === 401) {
+      if (
+        error.config.url !== "/auth/sign-up" &&
+        error.response.status === 401
+      ) {
         console.log(error);
         await this.http.post("/auth/refreshToken");
         return this.http.request(error.config);

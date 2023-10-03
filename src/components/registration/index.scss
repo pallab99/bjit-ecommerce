@@ -1,0 +1,19 @@
+.btn-div {
+  height: 25px !important;
+}
+
+.input-wrapper {
+  display: flex;
+  position: relative;
+}
+.input-field {
+  width: 95% !important;
+}
+.toggle-button {
+  position: absolute;
+  top: 9px;
+  right: 5px;
+  background: transparent;
+  outline: none;
+  border: none;
+}
