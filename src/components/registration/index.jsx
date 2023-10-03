@@ -7,8 +7,10 @@ import Button from "./../button";
 import ButtonLoader from "./../button-loader";
 import AuthApi from "../../api/AuthApi";
 import { alertConfigs } from "../../utils/alertConfig";
+import { useNavigate } from "react-router-dom";
 import "./index.scss";
 const Index = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -45,7 +47,7 @@ const Index = () => {
     if (res.success) {
       toast.success(res.message, alertConfigs.success);
       setTimeout(() => {
-        // navigate("/");
+        navigate("/verifyCode");
       }, 2000);
     } else {
       toast.error(res.message, alertConfigs.error);

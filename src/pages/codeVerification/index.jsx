@@ -1,7 +1,6 @@
-import React from "react";
-
+import CodeVerification from "./../../components/codeVerification";
 const Index = () => {
-  return <div>Index</div>;
+  return <CodeVerification />;
 };
 
 export default Index;

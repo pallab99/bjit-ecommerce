@@ -9,6 +9,7 @@ import UpdateBook from "./pages/updateBook";
 import ShowBookDetails from "./pages/showBookDetails";
 import NotFound from "./pages/notFound";
 import Registration from "./pages/registration";
+import CodeVerification from "./pages/codeVerification";
 function App() {
   return (
     <CookiesProvider>
@@ -23,6 +24,7 @@ function App() {
           Component={ShowBookDetails}
         ></Route>
         <Route path="/signUp" Component={Registration}></Route>
+        <Route path="/verifyCode" Component={CodeVerification}></Route>
         <Route path="*" Component={NotFound}></Route>
       </Routes>
     </CookiesProvider>
