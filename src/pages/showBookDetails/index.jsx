@@ -1,6 +1,7 @@
-import ShowBookDetails from "./../../components/showBookDetails";
+// import ShowBookDetails from "./../../components/showBookDetails";
+import BookDetails from "./components/bookDetails/bookDetails";
 const Index = () => {
-  return <ShowBookDetails></ShowBookDetails>;
+  return <BookDetails />;
 };
 
 export default Index;

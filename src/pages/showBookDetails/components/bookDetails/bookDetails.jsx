@@ -1,17 +1,17 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import "./index.scss";
+import "./bookDetails.style.scss";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../ui/loader";
-import Button from "../ui/button";
-import Navbar from "./../navbar";
+import Loader from "../../../../components/ui/loader";
+import Button from "../../../../components/ui/button";
+import Navbar from "../../../../components/navbar";
 // import useDeleteBook from '../../hooks/useDeleteBook';
-import BookApi from "../../api/BookApi";
+import BookApi from "../../../../api/BookApi";
 import Cookies from "js-cookie";
-import { isAdmin } from "../../helper/tokenAuthorizer";
+import { isAdmin } from "../../../../helper/tokenAuthorizer";
 import { ToastContainer, toast } from "react-toastify";
-import { alertConfigs } from "../../utils/alertConfig";
-const Index = () => {
+import { alertConfigs } from "../../../../utils/alertConfig";
+const BookDetails = () => {
   const { bookId } = useParams();
 
   const [data, setData] = useState(null);
@@ -146,4 +146,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default BookDetails;

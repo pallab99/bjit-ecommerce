@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import TextInput from "../../atoms/text-input/text-input";
 import PasswordInput from "../../atoms/password-input/password-input";
