@@ -2,21 +2,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../ui/loader";
+import Loader from "../../../../components/ui/loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import "./index.scss";
-import Navbar from "./../navbar";
-import BookApi from "../../api/BookApi";
-import { isAdmin } from "../../helper/tokenAuthorizer";
+import "./updateBook.style.scss";
+import Navbar from "./../../../../components/navbar";
+import BookApi from "../../../../api/BookApi";
+import { isAdmin } from "../../../../helper/tokenAuthorizer";
 import Cookies from "js-cookie";
-import { alertConfigs } from "../../utils/alertConfig";
-import Button from "../ui/button";
-import ButtonLoader from "../ui/button-loader";
+import { alertConfigs } from "../../../../utils/alertConfig";
+import Button from "../../../../components/ui/button";
+import ButtonLoader from "../../../../components/ui/button-loader";
 import { useForm } from "react-hook-form";
-import { isValidISBN } from "../../helper/isValidIsbn";
+import { isValidISBN } from "../../../../helper/isValidIsbn";
 
-function BookForm() {
+function UpdateBook() {
   const { bookId } = useParams();
   const navigate = useNavigate();
 
@@ -300,4 +300,4 @@ function BookForm() {
   );
 }
 
-export default BookForm;
+export default UpdateBook;

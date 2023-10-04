@@ -1,4 +1,5 @@
-import UpdateBook from "./../../components/updateBook";
+import UpdateBook from "./components/updateBook/updateBook";
+
 const Index = () => {
   return <UpdateBook></UpdateBook>;
 };
