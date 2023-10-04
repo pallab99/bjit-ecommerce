@@ -1,4 +1,5 @@
-import NotFound from "./../../components/notFound";
+import NotFound from "./components/notFound/notFound";
+
 const Index = () => {
   return <NotFound></NotFound>;
 };

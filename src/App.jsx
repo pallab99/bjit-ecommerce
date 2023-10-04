@@ -9,6 +9,7 @@ import ShowBookDetails from "./pages/showBookDetails";
 import NotFound from "./pages/notFound";
 import Registration from "./pages/registration";
 import CodeVerification from "./pages/codeVerification";
+import LogInPage from "./pages/loginPage/loginPage";
 function App() {
   return (
     <Routes>
@@ -23,6 +24,7 @@ function App() {
       ></Route>
       <Route path="/signUp" Component={Registration}></Route>
       <Route path="/verifyCode" Component={CodeVerification}></Route>
+      <Route path="/userLogin" Component={LogInPage}></Route>
       <Route path="*" Component={NotFound}></Route>
     </Routes>
   );

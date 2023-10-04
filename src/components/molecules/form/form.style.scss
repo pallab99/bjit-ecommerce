@@ -1,0 +1,27 @@
+.login-form-container {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.login-form {
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 10px;
+  background-color: white;
+}
+.email-field input {
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+.password-field input {
+  width: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 8px;
+}

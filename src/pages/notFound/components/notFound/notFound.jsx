@@ -1,7 +1,7 @@
-import "./index.scss";
-import Button from "../ui/button";
+import "./notFound.style.scss";
+import Button from "./../../../../components/ui/button";
 import { useNavigate } from "react-router-dom";
-const Index = () => {
+const NotFound = () => {
   const navigate = useNavigate();
   const navigateToHome = () => {
     navigate("/");
@@ -18,4 +18,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default NotFound;
