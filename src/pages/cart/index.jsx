@@ -1,4 +1,5 @@
-import Cart from './../../components/cart';
+import Cart from "./components/cart/cart";
+
 const Index = () => {
   return <Cart></Cart>;
 };
