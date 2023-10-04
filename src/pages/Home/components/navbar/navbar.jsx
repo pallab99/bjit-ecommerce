@@ -3,8 +3,8 @@ import "./index.scss";
 import SignInButton from "../../../../components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 import { isLoggedIn } from "../../../../helper/isLoggedIn";
+
 export default function Navbar() {
   const navigate = useNavigate();
   const handleButtonClick = () => {
