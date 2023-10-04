@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import Button from "./../../button";
+import Button from "../../ui/button";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";

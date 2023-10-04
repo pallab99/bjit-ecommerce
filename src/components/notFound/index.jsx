@@ -1,5 +1,5 @@
 import "./index.scss";
-import Button from "./../button";
+import Button from "../ui/button";
 import { useNavigate } from "react-router-dom";
 const Index = () => {
   const navigate = useNavigate();

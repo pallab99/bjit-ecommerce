@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import "./index.scss";
 import CartApi from "../../api/CartApi";
-import Button from "./../button";
+import Button from "../ui/button";
 import Navbar from "./../navbar";
-import Loader from "./../loader";
+import Loader from "../ui/loader";
 const Index = () => {
   const [book, setBook] = useState(null);
   const [count, setCount] = useState(0);

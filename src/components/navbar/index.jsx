@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import "./index.scss";
-import SignInButton from "./../button";
+import SignInButton from "../ui/button";
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useMemo, useState } from "react";
 import { CartContext } from "../../context/cartContext";
 import { Modal } from "antd";
-import Button from "./../button";
+import Button from "../ui/button";
 import { isLoggedIn } from "../../helper/isLoggedIn";
 export default function Index() {
   const navigate = useNavigate();

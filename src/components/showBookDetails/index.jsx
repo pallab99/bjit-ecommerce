@@ -2,8 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "./../loader";
-import Button from "./../button";
+import Loader from "../ui/loader";
+import Button from "../ui/button";
 import Navbar from "./../navbar";
 // import useDeleteBook from '../../hooks/useDeleteBook';
 import BookApi from "../../api/BookApi";

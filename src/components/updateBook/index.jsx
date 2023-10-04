@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "./../loader";
+import Loader from "../ui/loader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.scss";
@@ -11,8 +11,8 @@ import BookApi from "../../api/BookApi";
 import { isAdmin } from "../../helper/tokenAuthorizer";
 import Cookies from "js-cookie";
 import { alertConfigs } from "../../utils/alertConfig";
-import Button from "./../button";
-import ButtonLoader from "./../button-loader";
+import Button from "../ui/button";
+import ButtonLoader from "../ui/button-loader";
 import { useForm } from "react-hook-form";
 import { isValidISBN } from "../../helper/isValidIsbn";
 

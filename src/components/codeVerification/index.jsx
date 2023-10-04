@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 import "./index.scss";
 import AuthApi from "../../api/AuthApi";
 import { alertConfigs } from "../../utils/alertConfig";
-import Button from "./../button";
-import ButtonLoader from "./../button-loader";
+import Button from "../ui/button";
+import ButtonLoader from "../ui/button-loader";
 const Index = () => {
   const navigate = useNavigate();
   const {
