@@ -1,13 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Card from "./cards";
-import Loader from "../ui/loader";
-import Category from "./../category";
+import Loader from "../../../../components/ui/loader";
+import Category from "../../../../components/category";
 import CategoryGrid from "./categoryGrid";
 import "./index.scss";
 import { useEffect, useState } from "react";
-import BookApi from "../../api/BookApi";
-import useDebounce from "../../hooks/useDebounce";
+import BookApi from "../../../../api/BookApi";
+import useDebounce from "../../../../hooks/useDebounce";
 
 export default function Index() {
   const [isLoading, setIsLoading] = useState(false);

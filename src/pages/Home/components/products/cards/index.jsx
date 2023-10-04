@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import Button from "../../ui/button";
+import Button from "../../../../../components/ui/button";
 import "./index.scss";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
-import { isAdmin } from "../../../helper/tokenAuthorizer";
+import { isAdmin } from "../../../../../helper/tokenAuthorizer";
 
 export default function Index({ data, isLoading }) {
   const navigate = useNavigate();

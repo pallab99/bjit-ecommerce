@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-import { isStrongPassword } from "../../helper/isStrongPassword";
-import Button from "../ui/button";
-import ButtonLoader from "../ui/button-loader";
-import AuthApi from "../../api/AuthApi";
-import { alertConfigs } from "../../utils/alertConfig";
+import { isStrongPassword } from "./../../../../helper/isStrongPassword";
+import Button from "./../../../../components/ui/button";
+import ButtonLoader from "./../../../../components/ui/button-loader";
 import { useNavigate } from "react-router-dom";
-import "./index.scss";
-const Index = () => {
+import "./registration.style.scss";
+import { alertConfigs } from "../../../../utils/alertConfig";
+import AuthApi from "../../../../api/AuthApi";
+const Registration = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -307,4 +307,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Registration;

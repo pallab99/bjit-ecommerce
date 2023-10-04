@@ -1,4 +1,4 @@
-import Registration from "./../../components/registration";
+import Registration from "./components/registration/registration";
 const Index = () => {
   return <Registration></Registration>;
 };

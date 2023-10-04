@@ -1,6 +1,6 @@
-import Navbar from './../../components/navbar';
-import Product from './../../components/products';
-import Footer from './../../components/footer';
+import Navbar from "./components/navbar/navbar";
+import Product from "./components/products/products";
+import Footer from "./../../components/footer";
 
 function Index() {
   return (
