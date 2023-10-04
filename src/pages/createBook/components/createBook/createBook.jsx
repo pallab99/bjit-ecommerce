@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
-import "./index.scss";
-import Navbar from "./../navbar";
+import "./createBook.style.scss";
+import Navbar from "../../../../components/navbar";
 import { useState } from "react";
-import BookApi from "../../api/BookApi";
-import Button from "./../ui/button";
-import ButtonLoader from "./../ui/button-loader";
-// import ToasterMessage from "./../ui/toaster";
+import BookApi from "./../../../../api/BookApi";
+import Button from "../../../../components/ui/button";
+import ButtonLoader from "../../../../components/ui/button-loader";
+import ToasterMessage from "./../../../../components/toaster";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { alertConfigs } from "../../utils/alertConfig";
+import { alertConfigs } from "../../../../utils/alertConfig";
 import { useForm } from "react-hook-form";
-import { isValidISBN } from "../../helper/isValidIsbn";
+import { isValidISBN } from "../../../../helper/isValidIsbn";
 
-function Index() {
+function CreateBook() {
   const navigate = useNavigate();
   const initialState = {
     title: "",
@@ -250,4 +250,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default CreateBook;

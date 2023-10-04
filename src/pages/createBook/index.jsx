@@ -1,4 +1,5 @@
-import CreateBook from "./../../components/createBook";
+import CreateBook from "./components/createBook/createBook";
+
 const Index = () => {
   return <CreateBook></CreateBook>;
 };
