@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import Card from "./cards";
-import Loader from "../../../../components/ui/loader";
+import Loader from "../../../../components/atoms/loader";
 import Category from "../../../../components/category";
 import CategoryGrid from "./categoryGrid";
 import "./index.scss";

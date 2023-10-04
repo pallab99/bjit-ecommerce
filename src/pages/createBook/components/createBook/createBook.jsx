@@ -4,7 +4,7 @@ import Navbar from "../../../../components/navbar";
 import { useState } from "react";
 import BookApi from "./../../../../api/BookApi";
 import Button from "../../../../components/ui/button";
-import ButtonLoader from "../../../../components/ui/button-loader";
+import ButtonLoader from "../../../../components/atoms/button-loader";
 import ToasterMessage from "./../../../../components/toaster";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";

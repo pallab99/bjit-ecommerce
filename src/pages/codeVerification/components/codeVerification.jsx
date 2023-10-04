@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import "./index.scss";
-import AuthApi from "../../api/AuthApi";
-import { alertConfigs } from "../../utils/alertConfig";
-import Button from "../ui/button";
-import ButtonLoader from "../atoms/button-loader";
-const Index = () => {
+import "./codeVerification.style.scss";
+import AuthApi from "../../../api/AuthApi";
+import { alertConfigs } from "../../../utils/alertConfig";
+import Button from "./../../../components/ui/button";
+import ButtonLoader from "../../../components/atoms/button-loader";
+const CodeVerification = () => {
   const navigate = useNavigate();
   const {
     register,
@@ -95,4 +95,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default CodeVerification;

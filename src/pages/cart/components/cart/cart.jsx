@@ -4,7 +4,7 @@ import "./cart.style.scss";
 import CartApi from "../../../../api/CartApi";
 import Button from "../../../../components/ui/button";
 import Navbar from "../../../../components/navbar";
-import Loader from "../../../../components/ui/loader";
+import Loader from "../../../../components/atoms/loader";
 const Cart = () => {
   const [book, setBook] = useState(null);
   const [count, setCount] = useState(0);

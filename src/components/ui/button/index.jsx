@@ -1,5 +1,5 @@
 import "./index.scss";
-import ButtonLoader from "../button-loader";
+import ButtonLoader from "../../atoms/button-loader";
 export default function index({
   className,
   text,

@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { isStrongPassword } from "./../../../../helper/isStrongPassword";
 import Button from "./../../../../components/ui/button";
-import ButtonLoader from "./../../../../components/ui/button-loader";
+import ButtonLoader from "../../../../components/atoms/button-loader";
 import { useNavigate } from "react-router-dom";
 import "./registration.style.scss";
 import { alertConfigs } from "../../../../utils/alertConfig";

@@ -1,4 +1,5 @@
-import CodeVerification from "./../../components/codeVerification";
+import CodeVerification from "./components/codeVerification";
+
 const Index = () => {
   return <CodeVerification />;
 };

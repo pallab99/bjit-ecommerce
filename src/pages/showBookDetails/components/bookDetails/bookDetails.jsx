@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./bookDetails.style.scss";
 import { useParams, useNavigate } from "react-router-dom";
-import Loader from "../../../../components/ui/loader";
+import Loader from "../../../../components/atoms/loader";
 import Button from "../../../../components/ui/button";
 import Navbar from "../../../../components/navbar";
 // import useDeleteBook from '../../hooks/useDeleteBook';
