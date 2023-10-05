@@ -6,8 +6,11 @@ import "./form.style.scss";
 import Button from "../../atoms/button/button";
 import { useNavigate } from "react-router-dom";
 import { isStrongPassword } from "../../../helper/isStrongPassword";
+import { useDispatch } from "react-redux";
+import { SAVE_USER_DETAILS } from "../../../redux/actions/user";
 const Form = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     control,
@@ -27,6 +30,7 @@ const Form = () => {
         password: watch("password"),
       };
       const res = await AuthApi.signIn(data);
+      dispatch(SAVE_USER_DETAILS(res.data.data));
       navigate("/");
       console.log(res.data);
     } catch (error) {

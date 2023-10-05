@@ -17,11 +17,9 @@ const Cart = () => {
   const actualPrice = useSelector((state) => state.cart.actualPrice);
   const discountedPrice = useSelector((state) => state.cart.discountedPrice);
   const dispatch = useDispatch();
-  console.log("redux state", data);
-  const [book, setBook] = useState(null);
+
   const [count, setCount] = useState(0);
-  // const [actualPrice, setActualPrice] = useState();
-  // const [discountedPrice, setDiscountedPrice] = useState();
+
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     getCartByUser();

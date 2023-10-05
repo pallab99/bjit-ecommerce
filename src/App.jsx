@@ -11,6 +11,7 @@ import CodeVerification from "./pages/codeVerification";
 import LogInPage from "./pages/loginPage/loginPage";
 import AuthenticateAdminPage from "./pages/authenticte-admin";
 import AuthenticateUserPage from "./pages/authenticate-user";
+import ProfilePage from "./pages/profile";
 function App() {
   return (
     <Routes>
@@ -38,6 +39,7 @@ function App() {
       <Route element={<AuthenticateUserPage />}>
         <Route path="/cart" element={<Cart />}></Route>
       </Route>
+      <Route path="/profile" element={<ProfilePage />}></Route>
     </Routes>
   );
 }
