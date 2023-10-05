@@ -14,25 +14,29 @@ import AuthenticateUserPage from "./pages/authenticate-user";
 function App() {
   return (
     <Routes>
-      <Route path="/" Component={Home} />
-      <Route
-        path="/showBookDetails/:bookId"
-        Component={ShowBookDetails}
-      ></Route>
-      <Route path="/signUp" Component={Registration}></Route>
-      <Route path="/verifyCode" Component={CodeVerification}></Route>
-      <Route path="/userLogin" Component={LogInPage}></Route>
-      <Route path="*" Component={NotFound}></Route>
+      <Route path="/" element={<Home />} />
+
+      <Route path="/showBookDetails" element={<ShowBookDetails />}>
+        <Route path=":bookId" element={<ShowBookDetails />}></Route>
+      </Route>
+
+      <Route path="/signUp" element={<Registration />}></Route>
+      <Route path="/verifyCode" element={<CodeVerification />}></Route>
+      <Route path="/userLogin" element={<LogInPage />}></Route>
+      <Route path="*" element={<NotFound />}></Route>
 
       {/* Private routes for admin */}
       <Route element={<AuthenticateAdminPage />}>
         <Route path="/createBook" element={<CreateBook />}></Route>
-        <Route path="/updateBook/:bookId" Component={UpdateBook}></Route>
+
+        <Route path="/updateBook/" element={<UpdateBook />}>
+          <Route path=":bookId" element={<UpdateBook />}></Route>
+        </Route>
       </Route>
 
       {/* Private routes for user */}
       <Route element={<AuthenticateUserPage />}>
-        <Route path="/cart" Component={Cart}></Route>
+        <Route path="/cart" element={<Cart />}></Route>
       </Route>
     </Routes>
   );
