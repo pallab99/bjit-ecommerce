@@ -1,16 +1,18 @@
 import { useForm, Controller } from "react-hook-form";
 import TextInput from "../../atoms/text-input/text-input";
 import PasswordInput from "../../atoms/password-input/password-input";
-import AuthApi from "../../../api/AuthApi";
+// import AuthApi from "../../../api/AuthApi";
 import "./form.style.scss";
 import Button from "../../atoms/button/button";
 import { useNavigate } from "react-router-dom";
 import { isStrongPassword } from "../../../helper/isStrongPassword";
-import { useDispatch } from "react-redux";
-import { SAVE_USER_DETAILS } from "../../../redux/actions/user";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../../redux/actions/user";
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userDetails = useSelector((state) => state?.user?.userDetails);
+  console.log("gggg", userDetails);
   const {
     handleSubmit,
     control,
@@ -29,10 +31,8 @@ const Form = () => {
         email: watch("email"),
         password: watch("password"),
       };
-      const res = await AuthApi.signIn(data);
-      dispatch(SAVE_USER_DETAILS(res.data.data));
       navigate("/");
-      console.log(res.data);
+      dispatch(logIn(data));
     } catch (error) {
       console.log(error);
     }

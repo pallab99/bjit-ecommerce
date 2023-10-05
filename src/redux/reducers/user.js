@@ -1,14 +1,32 @@
 const initialState = {
-  userData: {},
+  loading: false,
+  userDetails: null,
+  error: null,
 };
 
-function userReducers(state = initialState, action) {
+function userReducer(state = initialState, action) {
   switch (action.type) {
-    case "SAVE_USER_DETAILS":
-      return { userData: action.payload };
-
+    case "FETCH_USER_DETAILS_STARTED":
+      return {
+        ...state,
+        loading: true,
+      };
+    case "FETCH_USER_DETAILS_SUCCESS":
+      console.log("user data", action.payload);
+      return {
+        ...state,
+        loading: false,
+        userDetails: action.payload,
+      };
+    case "FETCH_USER_DETAILS_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }
 }
-export default userReducers;
+
+export default userReducer;

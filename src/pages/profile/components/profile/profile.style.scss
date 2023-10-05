@@ -2,3 +2,16 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.profile-card img {
+  width: 20%;
+  margin-bottom: 5px;
+}
+.profile-card h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.profile-card {
+  margin-top: 10px;
+  display: grid;
+  place-items: center;
+}

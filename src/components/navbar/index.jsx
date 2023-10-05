@@ -28,6 +28,9 @@ export default function Index() {
       setShowSignInBtn(true);
     }
   }, []);
+  const navigateToProfile = () => {
+    navigate("/profile");
+  };
   return (
     <div className="nav">
       <div className="nav-container">
@@ -49,7 +52,12 @@ export default function Index() {
             />
           </svg>
           <span>{data.length}</span>
-          <img className="profile-icon" src={ProfileIcon} alt="" />
+          <img
+            className="profile-icon"
+            src={ProfileIcon}
+            alt=""
+            onClick={navigateToProfile}
+          />
           {!showSignInBtn && (
             <SignInButton
               className={"sign-in-btn"}
