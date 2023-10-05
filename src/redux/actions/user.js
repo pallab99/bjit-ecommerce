@@ -5,7 +5,7 @@ export function logIn(data) {
     dispatch(fetchUserDetailsStarted());
     try {
       const response = await AuthApi.signIn(data);
-
+      console.log("response", response.data.data);
       dispatch(fetchUserDetailsSuccess(response.data.data));
     } catch (error) {
       dispatch(fetchUserDetailsFailure(error.message));

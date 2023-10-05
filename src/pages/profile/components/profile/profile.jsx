@@ -3,8 +3,8 @@ import ProfileIcon from "./../../../../assets/profile.png";
 import { useSelector } from "react-redux";
 import Navbar from "../../../Home/components/navbar/navbar";
 const Profile = () => {
-  const userData = useSelector((state) => state.user.userData);
-  console.log(userData);
+  const userData = useSelector((state) => state.user.userDetails);
+  console.log("profile", userData);
   return (
     <>
       <Navbar></Navbar>
