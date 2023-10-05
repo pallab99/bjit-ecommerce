@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import "./bookDetails.style.scss";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Loader from "../../../../components/atoms/loader";
 import Button from "../../../../components/ui/button";
 import Navbar from "../../../../components/navbar";
@@ -13,6 +13,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { alertConfigs } from "../../../../utils/alertConfig";
 const BookDetails = () => {
   const { bookId } = useParams();
+  const location = useLocation();
+  const state = location.state;
 
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -95,12 +97,12 @@ const BookDetails = () => {
               })}
             </div>
             <div className="details-description">
-              <h2>Title : {data?.data?.result?.title}</h2>
-              <h4>Author: {data?.data?.result?.author}</h4>
-              <h4>Price: ${data?.data?.result?.price}</h4>
-              <h4>Rating: {data?.data?.result?.rating}/5</h4>
-              <h4>Category: {data?.data?.result?.category}</h4>
-              <h4>Description: {data?.data?.result?.description}</h4>
+              <h2>Title : {state?.title}</h2>
+              <h4>Author: {state?.author}</h4>
+              <h4>Price: ${state?.price}</h4>
+              <h4>Rating: {state?.rating}/5</h4>
+              <h4>Category: {state?.category}</h4>
+              <h4>Description: {state?.description}</h4>
             </div>
             {admin && (
               <>

@@ -14,8 +14,11 @@ export default function Index({ data, isLoading }) {
   const handleCreateBook = () => {
     navigate("/createBook");
   };
-  const handleShowBookDetails = (bookId) => {
-    navigate(`/showBookDetails/${bookId}`);
+  const handleShowBookDetails = (bookId, data) => {
+    // console.log(data);
+    navigate(`/showBookDetails/${bookId}`, {
+      state: data,
+    });
   };
   const [admin, setAdmin] = useState(false);
 
@@ -65,7 +68,14 @@ export default function Index({ data, isLoading }) {
               <Button
                 className={"sign-in-btn"}
                 text={"View"}
-                handleButtonClick={() => handleShowBookDetails(item._id)}
+                handleButtonClick={() =>
+                  handleShowBookDetails(item._id, {
+                    price: item.price,
+                    rating: item.rating,
+                    title: item.title,
+                    description: item.description,
+                  })
+                }
               ></Button>
             </div>
           );
