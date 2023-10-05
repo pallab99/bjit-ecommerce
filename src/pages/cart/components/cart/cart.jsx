@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import "./cart.style.scss";
@@ -5,11 +6,22 @@ import CartApi from "../../../../api/CartApi";
 import Button from "../../../../components/ui/button";
 import Navbar from "../../../../components/navbar";
 import Loader from "../../../../components/atoms/loader";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  ACTUAL_PRICE,
+  ALL_CART_ITEMS,
+  DISCOUNTED_PRICE,
+} from "../../../../redux/actions/cart";
 const Cart = () => {
+  const data = useSelector((state) => state.cart.items);
+  const actualPrice = useSelector((state) => state.cart.actualPrice);
+  const discountedPrice = useSelector((state) => state.cart.discountedPrice);
+  const dispatch = useDispatch();
+  console.log("redux state", data);
   const [book, setBook] = useState(null);
   const [count, setCount] = useState(0);
-  const [actualPrice, setActualPrice] = useState();
-  const [discountedPrice, setDiscountedPrice] = useState();
+  // const [actualPrice, setActualPrice] = useState();
+  // const [discountedPrice, setDiscountedPrice] = useState();
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     getCartByUser();
@@ -19,9 +31,10 @@ const Cart = () => {
     try {
       setIsLoading(true);
       const response = await CartApi.cartByUser();
-      setBook(response?.data?.data?.cartExistsForUser?.books);
-      setDiscountedPrice(response?.data?.data?.afterDiscount);
-      setActualPrice(response?.data?.data?.beforeDiscount);
+      // setBook(response?.data?.data?.cartExistsForUser?.books);
+      dispatch(ALL_CART_ITEMS(response?.data?.data?.cartExistsForUser?.books));
+      dispatch(ACTUAL_PRICE(response?.data?.data?.beforeDiscount));
+      dispatch(DISCOUNTED_PRICE(response?.data?.data?.afterDiscount));
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -46,7 +59,7 @@ const Cart = () => {
       console.log(error);
     }
   };
-  console.log(book);
+  // console.log(book);
   return (
     <>
       <Navbar></Navbar>
@@ -55,7 +68,7 @@ const Cart = () => {
       ) : (
         <div className="cart-container">
           <div className="main-cart-items">
-            {book?.map((ele) => {
+            {data?.map((ele) => {
               return (
                 <div className="cart-div" key={ele?.book?._id}>
                   <div className="book-details-div">
