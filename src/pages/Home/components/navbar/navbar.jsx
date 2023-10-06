@@ -36,7 +36,6 @@ export default function Navbar() {
   };
   const token = Cookies.get("accessToken");
   const admin = isAdmin(token);
-  console.log("isadmin", admin);
   return (
     <div className="nav">
       <div className="nav-container">

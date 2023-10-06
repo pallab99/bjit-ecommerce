@@ -6,6 +6,13 @@ class AuthApi {
     addItemToCart: "/cart/create",
     updateBookQuantity: "/cart/update",
   };
+  async addToCart(bookId) {
+    const data = {
+      book: bookId,
+      quantity: 1,
+    };
+    return await Api.http.post(this.endPoints.addItemToCart, data);
+  }
   async cartByUser() {
     return await Api.http.get(this.endPoints.cartByUser);
   }

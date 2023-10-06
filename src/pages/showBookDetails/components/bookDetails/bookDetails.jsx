@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 import { isAdmin } from "../../../../helper/tokenAuthorizer";
 import { ToastContainer, toast } from "react-toastify";
 import { alertConfigs } from "../../../../utils/alertConfig";
+import CartApi from "../../../../api/CartApi";
 const BookDetails = () => {
   const { bookId } = useParams();
   const location = useLocation();
@@ -64,7 +65,6 @@ const BookDetails = () => {
       const res = await BookApi.deleteBookById(bookId);
       showAlert(res.data);
     } catch (error) {
-      console.log("error", error.response);
       showAlert(error.response);
     }
   };
@@ -83,6 +83,13 @@ const BookDetails = () => {
       url: "https://qph.cf2.quoracdn.net/main-qimg-880a65f86b1d5d73a962ee2520459af7-lq",
     },
   ]);
+  const addToCart = async () => {
+    try {
+      const res = await CartApi.addToCart(bookId);
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
   return (
     <>
       {isLoading ? (
@@ -104,6 +111,13 @@ const BookDetails = () => {
               <h4>Category: {state?.category}</h4>
               <h4>Description: {state?.description}</h4>
             </div>
+            {!admin && (
+              <Button
+                className={"add-to-cart"}
+                text={"Add to cart"}
+                handleButtonClick={addToCart}
+              ></Button>
+            )}
             {admin && (
               <>
                 <div className="btn-div-update-dlt">
