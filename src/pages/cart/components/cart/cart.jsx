@@ -7,11 +7,12 @@ import Button from "../../../../components/ui/button";
 import Navbar from "../../../../components/navbar";
 import Loader from "../../../../components/atoms/loader";
 import { useDispatch, useSelector } from "react-redux";
+
 import {
-  ACTUAL_PRICE,
-  ALL_CART_ITEMS,
-  DISCOUNTED_PRICE,
-} from "../../../../redux/actions/cart";
+  setActualPrice,
+  setAllCartItems,
+  setDiscountedPrice,
+} from "../../../../redux/slices/cartSlice";
 const Cart = () => {
   const data = useSelector((state) => state.cart.items);
   const actualPrice = useSelector((state) => state.cart.actualPrice);
@@ -29,10 +30,9 @@ const Cart = () => {
     try {
       setIsLoading(true);
       const response = await CartApi.cartByUser();
-      // setBook(response?.data?.data?.cartExistsForUser?.books);
-      dispatch(ALL_CART_ITEMS(response?.data?.data?.cartExistsForUser?.books));
-      dispatch(ACTUAL_PRICE(response?.data?.data?.beforeDiscount));
-      dispatch(DISCOUNTED_PRICE(response?.data?.data?.afterDiscount));
+      dispatch(setAllCartItems(response?.data?.data?.cartExistsForUser?.books));
+      dispatch(setActualPrice(response?.data?.data?.beforeDiscount));
+      dispatch(setDiscountedPrice(response?.data?.data?.afterDiscount));
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);

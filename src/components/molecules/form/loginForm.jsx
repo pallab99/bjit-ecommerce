@@ -7,7 +7,8 @@ import Button from "../../atoms/button/button";
 import { useNavigate } from "react-router-dom";
 import { isStrongPassword } from "../../../helper/isStrongPassword";
 import { useDispatch, useSelector } from "react-redux";
-import { logIn } from "../../../redux/actions/user";
+import { logIn } from "../../../redux/slices/userSlice";
+// import { logIn } from "../../../redux/actions/user";
 const Form = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
