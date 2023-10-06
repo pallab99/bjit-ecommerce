@@ -9,7 +9,7 @@ const initialState = {
 
 export const logIn = createAsyncThunk("user/logIn", async (data) => {
   const res = await AuthApi.signIn(data);
-  const userData = await res.data;
+  const userData = await res.data.data;
   return userData;
 });
 
