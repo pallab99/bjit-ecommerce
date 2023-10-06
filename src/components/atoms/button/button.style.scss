@@ -117,3 +117,20 @@
   color: white;
   border: 1px solid #3d89f2;
 }
+
+.log-out {
+  margin-top: 4px;
+  padding: 8px 15px;
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+}
+.log-out:hover {
+  background-color: rgb(219, 46, 46);
+  color: white;
+  border: 1px solid rgb(219, 46, 46);
+}
